@@ -1,0 +1,1193 @@
+/* ============================================================
+   课刻 ClassTick · 皇室典藏皮肤（Royal Court Skin）
+   只在 <html data-skin="royal"> 时生效，叠加在 style.css 之上
+   意象：羊皮纸 + 鎏金 + 王室紫 + 纹章色；字体用本机华文宋体/楷体
+   ============================================================ */
+
+html[data-skin="royal"] {
+  color-scheme: light;
+
+  --bg: #e9dbb8;
+  --bg-2: #dfceA5;
+  --surface: #fbf4e1;
+  --surface-2: #f6ecd4;
+  --surface-3: #efe2c3;
+  --ink: #2b1b0f;
+  --ink-2: #4c351f;
+  --muted: #7d6547;
+  --muted-2: #a28b66;
+  --line: #ddc99f;
+  --line-strong: #c9b183;
+
+  --gold: #b98a2f;
+  --gold-2: #d9b45c;
+  --gold-3: #efd79a;
+  --gold-deep: #86601c;
+  --gold-line: rgba(160, 118, 38, .5);
+  --royal: #241a44;
+  --royal-2: #37295f;
+  --royal-deep: #150f2b;
+  --crimson: #7c1f2c;
+  --crimson-2: #a03040;
+
+  --brand: #8a6420;
+  --brand-deep: #6b4a12;
+  --brand-soft: #f2e4bd;
+  --accent: #8c2233;
+  --accent-deep: #6d1524;
+  --accent-soft: #f4ddd2;
+  --on-brand: #2a1a08;
+  --on-danger: #fff7ea;
+  --paper: #fbf4e1;
+  --warn: #a1661b;
+  --danger: #8c2233;
+
+  /* 纹章课程色 */
+  --c-tomato: #9d2431;
+  --c-teal: #1f6f57;
+  --c-amber: #b8862b;
+  --c-sky: #2f4f8a;
+  --c-violet: #5a3d7a;
+  --c-olive: #5d6b33;
+  --c-rose: #a34b63;
+  --c-sand: #8f6b3d;
+  --c-ink: #4d5163;
+
+  --shadow-sm: 0 1px 2px rgba(70, 45, 15, .10), 0 2px 8px rgba(70, 45, 15, .07);
+  --shadow-md: 0 2px 6px rgba(70, 45, 15, .10), 0 14px 34px rgba(70, 45, 15, .16);
+  --shadow-lg: 0 24px 60px rgba(40, 22, 8, .28);
+
+  --font: "Microsoft YaHei UI", "Microsoft YaHei", "PingFang SC", "Noto Sans SC", sans-serif;
+  --font-song: "STSong", "华文宋体", "Songti SC", "SimSun", "Noto Serif SC", serif;
+  --font-kai: "STKaiti", "华文楷体", "Kaiti SC", "KaiTi", "STSong", serif;
+  --font-xing: "STXingkai", "华文行楷", "STKaiti", "KaiTi", cursive;
+
+  --corner-tl: url("../assets/royal/corner-tl.webp");
+  --corner-tr: url("../assets/royal/corner-tr.webp");
+  --corner-bl: url("../assets/royal/corner-bl.webp");
+  --corner-br: url("../assets/royal/corner-br.webp");
+  --crown-img: url("../assets/royal/crown.webp");
+  --divider-img: url("../assets/royal/divider.webp");
+  --seal-img: url("../assets/royal/seal.webp");
+}
+
+/* 深色：皇室夜宴 */
+html[data-skin="royal"][data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #141020;
+  --bg-2: #0d0918;
+  --surface: #1f1833;
+  --surface-2: #271f3f;
+  --surface-3: #2f264a;
+  --ink: #f3e7cc;
+  --ink-2: #e0cfa9;
+  --muted: #b3a184;
+  --muted-2: #8a7a5f;
+  --line: #3b2f55;
+  --line-strong: #514170;
+  --gold: #d9b45c;
+  --gold-2: #efd79a;
+  --gold-3: #f7ecc9;
+  --gold-deep: #b98a2f;
+  --gold-line: rgba(217, 180, 92, .42);
+  --royal: #2b2049;
+  --royal-2: #3d2f66;
+  --royal-deep: #100b20;
+  --brand: #d9b45c;
+  --brand-deep: #efd79a;
+  --brand-soft: #33264a;
+  --accent: #e08a86;
+  --accent-deep: #f0b3ad;
+  --accent-soft: #3d2130;
+  --on-brand: #241a0a;
+  --on-danger: #2a0b08;
+  --paper: #f3e7cc;
+  --warn: #e5b76a;
+  --danger: #e08a86;
+  --c-tomato: #c14a55;
+  --c-teal: #4f9e83;
+  --c-amber: #d2a544;
+  --c-sky: #5b7cc0;
+  --c-violet: #8163ad;
+  --c-olive: #7f8f4a;
+  --c-rose: #c16d84;
+  --c-sand: #b08a58;
+  --c-ink: #7a8196;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .5);
+  --shadow-md: 0 14px 34px rgba(0, 0, 0, .5);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, .65);
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-skin="royal"][data-theme="auto"] {
+    color-scheme: dark;
+    --bg: #141020;
+    --bg-2: #0d0918;
+    --surface: #1f1833;
+    --surface-2: #271f3f;
+    --surface-3: #2f264a;
+    --ink: #f3e7cc;
+    --ink-2: #e0cfa9;
+    --muted: #b3a184;
+    --muted-2: #8a7a5f;
+    --line: #3b2f55;
+    --line-strong: #514170;
+    --gold: #d9b45c;
+    --gold-2: #efd79a;
+    --gold-3: #f7ecc9;
+    --gold-deep: #b98a2f;
+    --gold-line: rgba(217, 180, 92, .42);
+    --royal: #2b2049;
+    --royal-2: #3d2f66;
+    --royal-deep: #100b20;
+    --brand: #d9b45c;
+    --brand-deep: #efd79a;
+    --brand-soft: #33264a;
+    --accent: #e08a86;
+    --accent-deep: #f0b3ad;
+    --accent-soft: #3d2130;
+    --on-brand: #241a0a;
+    --on-danger: #2a0b08;
+    --paper: #f3e7cc;
+    --warn: #e5b76a;
+    --danger: #e08a86;
+    --c-tomato: #c14a55;
+    --c-teal: #4f9e83;
+    --c-amber: #d2a544;
+    --c-sky: #5b7cc0;
+    --c-violet: #8163ad;
+    --c-olive: #7f8f4a;
+    --c-rose: #c16d84;
+    --c-sand: #b08a58;
+    --c-ink: #7a8196;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, .5);
+    --shadow-md: 0 14px 34px rgba(0, 0, 0, .5);
+    --shadow-lg: 0 24px 60px rgba(0, 0, 0, .65);
+  }
+}
+
+/* ---------------------------------------------------------- 底纸与光氛 */
+
+html[data-skin="royal"] body {
+  background-color: #e7d8b3;
+  background-image:
+    radial-gradient(120% 80% at 50% -12%, rgba(255, 250, 235, .62), transparent 58%),
+    radial-gradient(120% 70% at 50% 112%, rgba(74, 45, 18, .18), transparent 62%),
+    url("../assets/royal/parchment.webp");
+  background-size: auto, auto, cover;
+  background-position: center, center, center top;
+  background-attachment: scroll, scroll, fixed;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  color: var(--ink);
+}
+
+html[data-skin="royal"][data-theme="dark"] body {
+  background-color: #100c1c;
+  background-image:
+    radial-gradient(110% 70% at 50% -10%, rgba(120, 92, 170, .22), transparent 60%),
+    radial-gradient(120% 70% at 50% 112%, rgba(217, 180, 92, .08), transparent 65%),
+    linear-gradient(180deg, #171128 0%, #0d0918 100%);
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-skin="royal"][data-theme="auto"] body {
+    background-color: #100c1c;
+    background-image:
+      radial-gradient(110% 70% at 50% -10%, rgba(120, 92, 170, .22), transparent 60%),
+      radial-gradient(120% 70% at 50% 112%, rgba(217, 180, 92, .08), transparent 65%),
+      linear-gradient(180deg, #171128 0%, #0d0918 100%);
+  }
+}
+
+html[data-skin="royal"] ::selection {
+  background: color-mix(in oklab, var(--gold) 40%, transparent);
+  color: var(--royal-deep);
+}
+
+html[data-skin="royal"] :focus-visible {
+  outline: 2.5px solid var(--gold-2);
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------- 顶栏 / 纹章 */
+
+html[data-skin="royal"] .brand-text h1 {
+  font-family: var(--font-kai);
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: .12em;
+  color: var(--royal);
+  text-shadow: 0 1px 0 rgba(255, 252, 240, .8);
+}
+html[data-skin="royal"][data-theme="dark"] .brand-text h1,
+html[data-skin="royal"][data-theme="auto"] .brand-text h1 { text-shadow: none; }
+
+html[data-skin="royal"] .brand-en {
+  font-family: var(--font-song);
+  font-size: 9.5px;
+  letter-spacing: .26em;
+  color: var(--gold-deep);
+  text-transform: uppercase;
+}
+
+html[data-skin="royal"] .brand-text p {
+  font-family: var(--font-kai);
+  font-size: 12.5px;
+  letter-spacing: .04em;
+  color: var(--muted);
+}
+
+html[data-skin="royal"] .logo {
+  border-radius: 16px;
+  box-shadow:
+    0 0 0 1px var(--gold-line),
+    0 0 0 3px rgba(255, 252, 240, .75),
+    0 0 0 4px var(--gold-line),
+    0 6px 16px rgba(60, 35, 10, .25);
+}
+html[data-skin="royal"] .logo svg { display: none; }
+html[data-skin="royal"] .logo .logo-royal { display: block; }
+html[data-skin="royal"] .logo .logo-royal img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 15px;
+}
+
+/* 装饰角标：金色细边 + 内衬 */
+html[data-skin="royal"] .chip-btn {
+  font-family: var(--font-kai);
+  letter-spacing: .05em;
+  border: 1px solid var(--gold-line);
+  background:
+    linear-gradient(180deg, rgba(255, 251, 238, .96), rgba(246, 234, 208, .96));
+  box-shadow:
+    0 0 0 1px rgba(255, 252, 240, .6) inset,
+    0 2px 6px rgba(70, 45, 15, .10);
+}
+html[data-skin="royal"] .chip-btn:hover {
+  border-color: var(--gold);
+  color: var(--royal);
+}
+html[data-skin="royal"] .chip-btn.accent {
+  background: linear-gradient(180deg, #e6c877, #c69a3c 62%, #a97f28);
+  border-color: var(--gold-deep);
+  color: #2a1a08;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .55) inset,
+    0 3px 9px rgba(90, 60, 15, .28);
+}
+html[data-skin="royal"] .chip-btn.accent:hover { color: #1d1206; }
+html[data-skin="royal"] .chip-btn.on {
+  background: linear-gradient(180deg, #f3e3ba, #e7d3a0);
+  border-color: var(--gold);
+  color: var(--gold-deep);
+}
+
+/* ---------------------------------------------------------- 导航 */
+
+html[data-skin="royal"] .tabbar {
+  background:
+    linear-gradient(180deg, rgba(255, 251, 239, .97), rgba(245, 233, 205, .97));
+  border: 1px solid var(--gold-line);
+  box-shadow:
+    0 0 0 3px rgba(255, 252, 240, .6),
+    0 0 0 4px var(--gold-line),
+    0 8px 22px rgba(70, 45, 15, .14);
+}
+html[data-skin="royal"] .tab {
+  font-family: var(--font-kai);
+  letter-spacing: .16em;
+  font-weight: 700;
+  color: var(--muted);
+}
+html[data-skin="royal"] .tab:hover { color: var(--royal); background: rgba(185, 138, 47, .10); }
+html[data-skin="royal"] .tab.is-active {
+  background: linear-gradient(180deg, #322552 0%, #1d1537 100%);
+  color: var(--gold-3);
+  box-shadow: inset 0 0 0 1px rgba(217, 180, 92, .55), 0 3px 10px rgba(30, 18, 55, .35);
+}
+html[data-skin="royal"] .tab.is-active svg { color: var(--gold-2); }
+
+/* ---------------------------------------------------------- 面板：鎏金双线 + 四角花纹 */
+
+html[data-skin="royal"] .panel {
+  position: relative;
+  background-color: var(--surface);
+  background-image:
+    linear-gradient(180deg, rgba(255, 251, 240, .90), rgba(249, 239, 217, .92)),
+    url("../assets/royal/parchment.webp");
+  background-size: auto, 720px auto;
+  background-blend-mode: normal, multiply;
+  border: 1px solid var(--gold-line);
+  border-radius: 16px;
+  box-shadow:
+    0 0 0 3px rgba(255, 252, 240, .55) inset,
+    0 0 0 1px rgba(255, 252, 240, .9),
+    0 0 0 2px var(--gold-line) inset,
+    0 12px 30px rgba(70, 45, 15, .13);
+}
+html[data-skin="royal"] .panel::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  pointer-events: none;
+  border-radius: 12px;
+  background:
+    var(--corner-tl) left top / 20px 20px no-repeat,
+    var(--corner-tr) right top / 20px 20px no-repeat,
+    var(--corner-bl) left bottom / 20px 20px no-repeat,
+    var(--corner-br) right bottom / 20px 20px no-repeat;
+  opacity: .85;
+}
+
+html[data-skin="royal"] .panel-head h2 {
+  font-family: var(--font-song);
+  font-weight: 700;
+  letter-spacing: .06em;
+  color: var(--royal);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+html[data-skin="royal"] .panel-head h2::before {
+  content: "";
+  width: 19px;
+  height: 19px;
+  flex: none;
+  background: var(--crown-img) center / contain no-repeat;
+  opacity: .9;
+}
+html[data-skin="royal"] .panel-sub {
+  font-family: var(--font-kai);
+  letter-spacing: .04em;
+  color: var(--muted);
+}
+
+html[data-skin="royal"] .badge {
+  font-family: var(--font-kai);
+  border: 1px solid var(--gold-line);
+  background: rgba(185, 138, 47, .12);
+  color: var(--gold-deep);
+}
+html[data-skin="royal"] .badge.ok { background: rgba(31, 111, 87, .12); border-color: rgba(31, 111, 87, .35); color: #1f6f57; }
+html[data-skin="royal"] .badge.warn { background: rgba(140, 34, 51, .10); border-color: rgba(140, 34, 51, .32); color: var(--crimson); }
+
+/* ---------------------------------------------------------- 按钮 */
+
+html[data-skin="royal"] .text-btn {
+  font-family: var(--font-kai);
+  letter-spacing: .06em;
+  font-weight: 700;
+}
+html[data-skin="royal"] .text-btn.solid {
+  background: linear-gradient(180deg, #e6c877 0%, #c69a3c 58%, #a97f28 100%);
+  color: #2a1a08;
+  border: 1px solid var(--gold-deep);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .6) inset,
+    0 4px 12px rgba(90, 60, 15, .26);
+  text-shadow: 0 1px 0 rgba(255, 240, 200, .45);
+}
+html[data-skin="royal"] .text-btn.solid:hover {
+  background: linear-gradient(180deg, #efd68d 0%, #d2a849 58%, #b58a2c 100%);
+  transform: translateY(-1px);
+}
+html[data-skin="royal"] .text-btn.bordered {
+  background: linear-gradient(180deg, rgba(255, 251, 240, .97), rgba(246, 234, 208, .97));
+  border-color: var(--gold-line);
+  color: var(--royal);
+  box-shadow: 0 0 0 1px rgba(255, 252, 240, .7) inset;
+}
+html[data-skin="royal"] .text-btn.bordered:hover {
+  border-color: var(--gold);
+  background: linear-gradient(180deg, #fffdf4, #f6e9c9);
+}
+html[data-skin="royal"] .text-btn.accent { color: var(--crimson); }
+html[data-skin="royal"] .text-btn.accent:hover { background: var(--accent-soft); }
+html[data-skin="royal"] .text-btn.danger { color: var(--crimson); }
+html[data-skin="royal"] .text-btn.solid.danger {
+  background: linear-gradient(180deg, #9d2d3d, #7c1f2c 62%, #66151f);
+  border-color: #5c1119;
+  color: #fff3e4;
+}
+
+html[data-skin="royal"] .mini-btn {
+  font-family: var(--font-kai);
+  letter-spacing: .04em;
+  border-color: var(--gold-line);
+  background: linear-gradient(180deg, rgba(255, 251, 240, .95), rgba(246, 234, 208, .95));
+  color: var(--royal);
+}
+html[data-skin="royal"] .mini-btn:hover { border-color: var(--gold); color: var(--gold-deep); }
+html[data-skin="royal"] .mini-btn.ghost { background: transparent; color: var(--muted); }
+html[data-skin="royal"] .mini-btn.ghost:hover { background: rgba(185, 138, 47, .1); color: var(--royal); }
+
+html[data-skin="royal"] .icon-btn { color: var(--muted); }
+html[data-skin="royal"] .icon-btn:hover { background: rgba(185, 138, 47, .14); color: var(--gold-deep); }
+html[data-skin="royal"] .icon-btn.danger:hover { background: var(--accent-soft); color: var(--crimson); }
+
+html[data-skin="royal"] .signin-badge {
+  font-family: var(--font-kai);
+  border: 1px solid var(--gold-line);
+  background: linear-gradient(180deg, #f5e6c2, #e8d3a2);
+  color: var(--gold-deep);
+  box-shadow: 0 0 0 1px rgba(255, 252, 240, .6) inset;
+}
+
+/* ---------------------------------------------------------- Hero：城堡夜空 */
+
+html[data-skin="royal"] .hero {
+  background:
+    linear-gradient(96deg, rgba(18, 12, 35, .97) 0%, rgba(29, 20, 54, .94) 34%, rgba(31, 21, 58, .72) 62%, rgba(20, 13, 38, .5) 100%),
+    url("../assets/royal/hero-castle.webp") right center / cover no-repeat,
+    linear-gradient(160deg, #241a44, #120d26);
+  border: 1px solid var(--gold-line);
+  border-radius: 20px;
+  box-shadow:
+    0 0 0 1px rgba(217, 180, 92, .35) inset,
+    0 0 0 4px rgba(255, 251, 238, .18),
+    0 22px 48px rgba(18, 10, 35, .38);
+  color: #f6ead0;
+}
+html[data-skin="royal"] .hero::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  pointer-events: none;
+  border-radius: 14px;
+  border: 1px solid rgba(217, 180, 92, .34);
+  z-index: 1;
+}
+html[data-skin="royal"] .hero::after {
+  content: "";
+  position: absolute;
+  right: 18px;
+  top: 14px;
+  width: 46px;
+  height: 46px;
+  background: var(--crown-img) center / contain no-repeat;
+  opacity: .5;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, .4));
+}
+html[data-skin="royal"] .hero-glow { display: none; }
+html[data-skin="royal"] .hero-main,
+html[data-skin="royal"] .hero-side,
+html[data-skin="royal"] .hero-foot { position: relative; z-index: 2; }
+
+html[data-skin="royal"] .hero-kicker {
+  font-family: var(--font-kai);
+  font-size: 12.5px;
+  letter-spacing: .14em;
+  color: var(--gold-3);
+}
+html[data-skin="royal"] .hero-kicker .pulse {
+  background: var(--gold-2);
+  box-shadow: 0 0 0 3px rgba(217, 180, 92, .18);
+}
+
+html[data-skin="royal"] .hero-course {
+  font-family: var(--font-song);
+  font-weight: 700;
+  letter-spacing: .02em;
+  color: #f6e2ae;
+  background: linear-gradient(180deg, #fdf0cd 0%, #eed392 46%, #c9a24a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 18px rgba(217, 180, 92, .22);
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, .25));
+}
+html[data-skin="royal"] .hero-meta { color: #e8d6ae; font-family: var(--font-kai); letter-spacing: .03em; }
+html[data-skin="royal"] .hero-meta svg { color: var(--gold-2); }
+html[data-skin="royal"] .hero-bring { color: #d8c49a; font-family: var(--font-kai); }
+html[data-skin="royal"] .hero-bring svg { color: var(--gold-2); }
+html[data-skin="royal"] .hero-bring b {
+  color: #f4e3b8;
+  background: rgba(217, 180, 92, .12);
+  border-color: rgba(217, 180, 92, .42);
+}
+html[data-skin="royal"] .cd-label { color: var(--gold-3); font-family: var(--font-kai); letter-spacing: .16em; }
+html[data-skin="royal"] .cd-dial b { color: #f7e6bd; text-shadow: 0 2px 10px rgba(217, 180, 92, .25); }
+html[data-skin="royal"] .cd-dial i { color: rgba(232, 214, 174, .62); font-family: var(--font-kai); }
+html[data-skin="royal"] .cd-sep { color: rgba(217, 180, 92, .6); }
+html[data-skin="royal"] .cd-sub { color: rgba(226, 206, 164, .7); font-family: var(--font-kai); }
+html[data-skin="royal"] .cd-dials.is-urgent b { color: #ffb59b; }
+html[data-skin="royal"] .hero-foot {
+  color: rgba(232, 214, 174, .72);
+  font-family: var(--font-kai);
+  letter-spacing: .04em;
+  border-top: 1px dashed rgba(217, 180, 92, .32);
+}
+html[data-skin="royal"] .hero .text-btn.solid {
+  background: linear-gradient(180deg, #efd68d, #c99f42 60%, #aa7f28);
+  border-color: #8a6420;
+}
+html[data-skin="royal"] .hero .text-btn.bordered {
+  background: rgba(255, 249, 235, .1);
+  border-color: rgba(217, 180, 92, .5);
+  color: var(--gold-3);
+}
+html[data-skin="royal"] .hero .signin-badge {
+  background: rgba(217, 180, 92, .16);
+  border-color: rgba(217, 180, 92, .45);
+  color: var(--gold-3);
+}
+
+/* ---------------------------------------------------------- 提示条 */
+
+html[data-skin="royal"] .notice {
+  background:
+    linear-gradient(180deg, rgba(255, 251, 240, .96), rgba(247, 236, 213, .96));
+  border: 1px solid var(--gold-line);
+  border-radius: 12px;
+  box-shadow: 0 0 0 2px rgba(255, 252, 240, .5) inset, 0 6px 16px rgba(70, 45, 15, .10);
+  font-family: var(--font-kai);
+  letter-spacing: .02em;
+}
+html[data-skin="royal"] .notice b { color: var(--royal); }
+html[data-skin="royal"] .notice-ico {
+  background: rgba(185, 138, 47, .14);
+  color: var(--gold-deep);
+  border: 1px solid var(--gold-line);
+}
+html[data-skin="royal"] .notice-accent {
+  background: linear-gradient(180deg, rgba(250, 240, 214, .97), rgba(243, 228, 190, .97));
+  border-color: var(--gold);
+}
+html[data-skin="royal"] .notice-demo {
+  background: linear-gradient(96deg, rgba(48, 34, 80, .97), rgba(30, 21, 52, .97));
+  color: var(--gold-3);
+  border-color: rgba(217, 180, 92, .5);
+}
+html[data-skin="royal"] .notice-demo b { color: var(--gold-3); }
+html[data-skin="royal"] .notice-demo .notice-ico {
+  background: rgba(217, 180, 92, .16);
+  border-color: rgba(217, 180, 92, .4);
+  color: var(--gold-2);
+}
+html[data-skin="royal"] .notice-demo .icon-btn { color: var(--gold-3); }
+html[data-skin="royal"] .notice-warn {
+  background: linear-gradient(180deg, rgba(250, 232, 226, .97), rgba(244, 219, 210, .97));
+  border-color: rgba(124, 31, 44, .4);
+}
+
+/* ---------------------------------------------------------- 今日侧栏 */
+
+html[data-skin="royal"] .side-title {
+  font-family: var(--font-song);
+  letter-spacing: .08em;
+  color: var(--royal);
+  font-size: 13.5px;
+}
+html[data-skin="royal"] .side-title svg { color: var(--gold-deep); }
+html[data-skin="royal"] .bring-chip {
+  font-family: var(--font-kai);
+  letter-spacing: .03em;
+  background: linear-gradient(180deg, #fffaf0, #f4e7c8);
+  border-color: var(--gold-line);
+  color: var(--ink-2);
+}
+html[data-skin="royal"] .side-note { font-family: var(--font-kai); color: var(--muted); }
+html[data-skin="royal"] .side-empty { font-family: var(--font-kai); color: var(--muted); }
+html[data-skin="royal"] .side-status {
+  font-family: var(--font-kai);
+  letter-spacing: .05em;
+  color: var(--royal);
+}
+html[data-skin="royal"] .week-bar {
+  background: linear-gradient(180deg, #fff9ec, #f2e4c3);
+  border: 1px solid transparent;
+}
+html[data-skin="royal"] .week-bar b { color: var(--ink-2); font-family: var(--font-song); }
+html[data-skin="royal"] .week-bar i { color: var(--muted-2); }
+html[data-skin="royal"] .week-bar.is-today {
+  background: linear-gradient(180deg, #f6e6bb, #e9d3a0);
+  border-color: var(--gold);
+}
+html[data-skin="royal"] .week-bar.is-today b { color: var(--gold-deep); }
+html[data-skin="royal"] .reminder-summary li { border-bottom-color: var(--gold-line); }
+html[data-skin="royal"] .reminder-summary b { color: var(--gold-deep); }
+
+/* ---------------------------------------------------------- 时间线 */
+
+html[data-skin="royal"] .tl-time b { font-family: var(--font-song); color: var(--ink-2); }
+html[data-skin="royal"] .tl-time span { color: var(--muted-2); }
+html[data-skin="royal"] .tl-rail::before { background: linear-gradient(180deg, rgba(185, 138, 47, .55), rgba(185, 138, 47, .18)); }
+html[data-skin="royal"] .tl-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  transform: rotate(45deg);
+  border: 2px solid var(--gold);
+  background: var(--surface);
+  box-shadow: 0 0 0 3px rgba(185, 138, 47, .10);
+}
+html[data-skin="royal"] .tl-item.is-now .tl-dot {
+  background: var(--crimson);
+  border-color: var(--gold-2);
+  box-shadow: 0 0 0 4px rgba(124, 31, 44, .16);
+}
+html[data-skin="royal"] .tl-card {
+  background:
+    linear-gradient(180deg, rgba(255, 251, 240, .96), rgba(248, 237, 214, .96));
+  border: 1px solid var(--gold-line);
+  border-left: 3px solid var(--tint, var(--gold));
+  border-radius: 10px;
+  box-shadow: 0 0 0 1px rgba(255, 252, 240, .65) inset, 0 3px 10px rgba(70, 45, 15, .07);
+}
+html[data-skin="royal"] .tl-head h3 { font-family: var(--font-song); letter-spacing: .03em; color: var(--ink); }
+html[data-skin="royal"] .tl-state { font-family: var(--font-kai); letter-spacing: .03em; color: var(--muted); }
+html[data-skin="royal"] .tl-meta { font-family: var(--font-kai); color: var(--muted); }
+html[data-skin="royal"] .tl-bring span {
+  font-family: var(--font-kai);
+  background: rgba(185, 138, 47, .10);
+  border-color: var(--gold-line);
+  color: var(--ink-2);
+}
+html[data-skin="royal"] .tl-item.is-now .tl-card {
+  background: linear-gradient(180deg, rgba(253, 244, 222, .98), rgba(246, 231, 197, .98));
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(185, 138, 47, .14), 0 6px 18px rgba(70, 45, 15, .10);
+}
+html[data-skin="royal"] .tl-item.is-next .tl-state { color: var(--crimson); font-weight: 700; }
+html[data-skin="royal"] .tl-item.is-past .tl-card { opacity: .52; }
+
+html[data-skin="royal"] .empty-state { color: var(--muted); font-family: var(--font-kai); }
+html[data-skin="royal"] .empty-state p { font-family: var(--font-song); color: var(--royal); letter-spacing: .06em; }
+html[data-skin="royal"] .empty-emblem { display: block; width: 46px; height: 46px; background: var(--crown-img) center / contain no-repeat; opacity: .55; margin-bottom: 2px; }
+html[data-skin="royal"] .empty-emoji { display: none; }
+
+/* ---------------------------------------------------------- 周课表 */
+
+html[data-skin="royal"] .week-grid {
+  border: 1px solid var(--gold-line);
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: 0 0 0 2px rgba(255, 252, 240, .5) inset;
+}
+html[data-skin="royal"] .wk-head {
+  background: linear-gradient(180deg, #fbf3df, #efe0bd);
+  border-color: var(--gold-line);
+  color: var(--muted);
+  font-family: var(--font-kai);
+  letter-spacing: .05em;
+}
+html[data-skin="royal"] .wk-head b { font-family: var(--font-song); color: var(--ink-2); }
+html[data-skin="royal"] .wk-head span { color: var(--muted-2); }
+html[data-skin="royal"] .wk-head.is-today {
+  background: linear-gradient(180deg, #e8d3a0, #ddc389);
+}
+html[data-skin="royal"] .wk-head.is-today b { color: var(--gold-deep); }
+html[data-skin="royal"] .wk-head.is-weekend { background: linear-gradient(180deg, #f5ead0, #ecdcb8); }
+html[data-skin="royal"] .wk-times { background: linear-gradient(180deg, #faf2dd, #f1e2bf); }
+html[data-skin="royal"] .wk-time { border-color: var(--gold-line); }
+html[data-skin="royal"] .wk-time b { font-family: var(--font-song); color: var(--gold-deep); }
+html[data-skin="royal"] .wk-time span { color: var(--muted-2); }
+html[data-skin="royal"] .wk-col {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent calc(var(--row-h, 56px) - 1px),
+    var(--line) calc(var(--row-h, 56px) - 1px),
+    var(--line) var(--row-h, 56px)
+  );
+}
+html[data-skin="royal"] .wk-col.is-today { background-color: rgba(185, 138, 47, .10); }
+html[data-skin="royal"] .wk-col.is-weekend { background-color: rgba(70, 45, 15, .035); }
+html[data-skin="royal"] .wk-block {
+  border: 1px solid color-mix(in oklab, var(--tint) 40%, var(--gold));
+  border-left: 3px solid var(--tint);
+  border-radius: 7px;
+  background:
+    linear-gradient(180deg, rgba(255, 251, 240, .55), rgba(255, 248, 230, .35)),
+    color-mix(in oklab, var(--tint) 17%, var(--surface));
+  box-shadow: 0 0 0 1px rgba(255, 252, 240, .45) inset;
+}
+html[data-skin="royal"] .wk-block:hover {
+  background:
+    linear-gradient(180deg, rgba(255, 251, 240, .5), rgba(255, 248, 230, .3)),
+    color-mix(in oklab, var(--tint) 26%, var(--surface));
+  border-color: var(--gold);
+}
+html[data-skin="royal"] .wk-block b { font-family: var(--font-song); color: color-mix(in oklab, var(--tint) 55%, var(--ink)); }
+html[data-skin="royal"] .wk-block span { font-family: var(--font-kai); color: var(--ink-2); }
+html[data-skin="royal"] .wk-block-time { color: var(--gold-deep) !important; }
+html[data-skin="royal"] .wk-empty { color: rgba(185, 138, 47, .35); }
+html[data-skin="royal"] .legend-item i { border-radius: 2px; transform: rotate(45deg); width: 8px; height: 8px; }
+html[data-skin="royal"] .legend { font-family: var(--font-kai); color: var(--muted); }
+
+/* ---------------------------------------------------------- 课程页 */
+
+html[data-skin="royal"] .course-card {
+  background:
+    linear-gradient(180deg, rgba(255, 251, 240, .9), rgba(249, 239, 217, .92)),
+    url("../assets/royal/parchment.webp");
+  background-size: auto, 720px auto;
+  background-blend-mode: normal, multiply;
+  border: 1px solid var(--gold-line);
+  border-left: 3px solid var(--tint, var(--gold));
+  border-radius: 10px;
+  box-shadow: 0 0 0 2px rgba(255, 252, 240, .45) inset, 0 6px 16px rgba(70, 45, 15, .08);
+}
+html[data-skin="royal"] .course-swatch { transform: rotate(45deg); border-radius: 2px; box-shadow: 0 0 0 1px var(--gold-line); }
+html[data-skin="royal"] .course-title h3 { font-family: var(--font-song); letter-spacing: .04em; color: var(--ink); }
+html[data-skin="royal"] .course-title p { font-family: var(--font-kai); color: var(--muted); }
+html[data-skin="royal"] .sess-list li {
+  background: linear-gradient(180deg, #fffaf0, #f5e9cc);
+  border-color: var(--gold-line);
+  font-family: var(--font-kai);
+}
+html[data-skin="royal"] .sess-day { color: var(--royal); }
+html[data-skin="royal"] .sess-time { color: var(--gold-deep); }
+html[data-skin="royal"] .sess-room { color: var(--muted); }
+html[data-skin="royal"] .sess-weeks { color: var(--muted-2); }
+html[data-skin="royal"] .course-bring span {
+  font-family: var(--font-kai);
+  background: rgba(185, 138, 47, .1);
+  border-color: var(--gold-line);
+}
+
+/* ---------------------------------------------------------- 设置 */
+
+html[data-skin="royal"] .field > span { font-family: var(--font-kai); letter-spacing: .04em; color: var(--muted); }
+html[data-skin="royal"] .field em { color: var(--crimson); }
+html[data-skin="royal"] input[type="text"],
+html[data-skin="royal"] input[type="url"],
+html[data-skin="royal"] input[type="date"],
+html[data-skin="royal"] input[type="time"],
+html[data-skin="royal"] input[type="number"],
+html[data-skin="royal"] select,
+html[data-skin="royal"] textarea {
+  background: linear-gradient(180deg, #fffdf6, #faf1dc);
+  border-color: var(--line-strong);
+  font-family: var(--font-kai);
+  color: var(--ink);
+}
+html[data-skin="royal"] input:focus,
+html[data-skin="royal"] select:focus,
+html[data-skin="royal"] textarea:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(185, 138, 47, .18);
+}
+html[data-skin="royal"] .switch { background: var(--line-strong); }
+html[data-skin="royal"] .switch-row input:checked + .switch {
+  background: linear-gradient(180deg, #e2c06a, #c39a3e);
+  box-shadow: 0 0 0 1px var(--gold-deep);
+}
+html[data-skin="royal"] .switch::after { background: #fffdf4; }
+html[data-skin="royal"] .switch-row { border-bottom-color: var(--gold-line); }
+html[data-skin="royal"] .switch-text b { font-family: var(--font-song); letter-spacing: .04em; }
+html[data-skin="royal"] .switch-text small { font-family: var(--font-kai); color: var(--muted); }
+html[data-skin="royal"] .period-row {
+  background: linear-gradient(180deg, #fffaf0, #f4e8ca);
+  border-color: var(--gold-line);
+}
+html[data-skin="royal"] .period-n { font-family: var(--font-song); color: var(--gold-deep); }
+html[data-skin="royal"] .hint { font-family: var(--font-kai); color: var(--muted); letter-spacing: .02em; }
+html[data-skin="royal"] .hint b { color: var(--royal); }
+html[data-skin="royal"] code {
+  background: rgba(185, 138, 47, .14);
+  color: var(--gold-deep);
+  font-family: "Cascadia Code", Consolas, monospace;
+}
+html[data-skin="royal"] .badge { letter-spacing: .08em; }
+
+/* ---------------------------------------------------------- 弹层 */
+
+html[data-skin="royal"] .sheet {
+  background:
+    linear-gradient(180deg, rgba(255, 251, 240, .98), rgba(248, 238, 216, .99)),
+    url("../assets/royal/parchment.webp");
+  background-size: auto, 720px auto;
+  background-blend-mode: normal, multiply;
+  border: 1px solid var(--gold);
+  border-radius: 18px;
+  box-shadow:
+    0 0 0 4px rgba(255, 252, 240, .35),
+    0 0 0 5px var(--gold-line),
+    var(--shadow-lg);
+}
+html[data-skin="royal"] .sheet::backdrop {
+  background: rgba(19, 12, 36, .62);
+  backdrop-filter: blur(6px);
+}
+html[data-skin="royal"] .sheet-head {
+  background: linear-gradient(180deg, #322552 0%, #1d1537 100%);
+  border-bottom: 1px solid rgba(217, 180, 92, .45);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .06) inset;
+}
+html[data-skin="royal"] .sheet-head h2 {
+  font-family: var(--font-song);
+  letter-spacing: .1em;
+  color: var(--gold-3);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, .35);
+}
+html[data-skin="royal"] .sheet-head .icon-btn { color: var(--gold-3); }
+html[data-skin="royal"] .sheet-head .icon-btn:hover { background: rgba(217, 180, 92, .16); color: #fff6dd; }
+html[data-skin="royal"] .sheet-foot {
+  background: linear-gradient(180deg, #f8eed6, #f0e1bf);
+  border-top: 1px solid var(--gold-line);
+}
+html[data-skin="royal"] .sheet-body { font-family: var(--font-kai); }
+html[data-skin="royal"] .sessions-head { font-family: var(--font-song); color: var(--muted); letter-spacing: .05em; }
+html[data-skin="royal"] .session-row {
+  background: linear-gradient(180deg, #fffaf0, #f4e7c8);
+  border-color: var(--gold-line);
+}
+html[data-skin="royal"] .color-dot {
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(255, 252, 240, .8), 0 0 0 2px var(--gold-line);
+}
+html[data-skin="royal"] .color-dot.is-on {
+  box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--gold), 0 0 0 6px rgba(185, 138, 47, .25);
+}
+html[data-skin="royal"] .about-list li::marker { color: var(--gold-deep); }
+html[data-skin="royal"] #about-body h3 {
+  font-family: var(--font-song);
+  letter-spacing: .08em;
+  color: var(--royal);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+html[data-skin="royal"] #about-body h3::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  background: var(--crown-img) center / contain no-repeat;
+  opacity: .75;
+}
+
+/* ---------------------------------------------------------- 提醒 / Toast */
+
+html[data-skin="royal"] .reminder {
+  background:
+    linear-gradient(180deg, rgba(255, 251, 240, .98), rgba(248, 238, 216, .99)),
+    url("../assets/royal/parchment.webp");
+  background-size: auto, 520px auto;
+  background-blend-mode: normal, multiply;
+  border: 1px solid var(--gold);
+  border-left: 4px solid var(--crimson);
+  border-radius: 12px;
+  box-shadow: 0 0 0 3px rgba(255, 252, 240, .3), var(--shadow-lg);
+}
+html[data-skin="royal"] .reminder.kind-digest { border-left-color: var(--gold); }
+html[data-skin="royal"] .reminder.kind-evening { border-left-color: var(--royal-2); }
+html[data-skin="royal"] .reminder.kind-sign {
+  border-left-color: var(--crimson);
+  box-shadow: 0 0 0 3px rgba(124, 31, 44, .14), var(--shadow-lg);
+}
+html[data-skin="royal"] .reminder.kind-sign::after {
+  content: "";
+  position: absolute;
+  right: 12px;
+  top: 34px;
+  width: 52px;
+  height: 52px;
+  background: var(--seal-img) center / contain no-repeat;
+  opacity: .9;
+  transform: rotate(-8deg);
+  pointer-events: none;
+}
+html[data-skin="royal"] .reminder { position: relative; }
+html[data-skin="royal"] .reminder.kind-sign .reminder-head,
+html[data-skin="royal"] .reminder.kind-sign h3,
+html[data-skin="royal"] .reminder.kind-sign p,
+html[data-skin="royal"] .reminder.kind-sign .reminder-actions { position: relative; z-index: 1; }
+html[data-skin="royal"] .reminder-kind {
+  font-family: var(--font-kai);
+  letter-spacing: .16em;
+  color: var(--crimson);
+}
+html[data-skin="royal"] .reminder.kind-digest .reminder-kind { color: var(--gold-deep); }
+html[data-skin="royal"] .reminder.kind-evening .reminder-kind { color: var(--royal-2); }
+html[data-skin="royal"] .reminder h3 { font-family: var(--font-song); letter-spacing: .04em; color: var(--ink); }
+html[data-skin="royal"] .reminder p { font-family: var(--font-kai); color: var(--muted); }
+
+html[data-skin="royal"] .toast {
+  background: linear-gradient(180deg, #332655, #1c1533);
+  color: var(--gold-3);
+  border: 1px solid rgba(217, 180, 92, .55);
+  border-radius: 10px;
+  font-family: var(--font-kai);
+  letter-spacing: .04em;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .2), var(--shadow-lg);
+}
+html[data-skin="royal"] .toast.is-error {
+  background: linear-gradient(180deg, #8d2837, #6a1622);
+  color: #ffeede;
+  border-color: #c98d96;
+}
+
+html[data-skin="royal"] .foot { font-family: var(--font-kai); letter-spacing: .06em; color: var(--muted); }
+html[data-skin="royal"] .foot svg { color: var(--gold); }
+html[data-skin="royal"] .link-btn { color: var(--muted); }
+html[data-skin="royal"] .link-btn:hover { color: var(--gold-deep); }
+
+/* 滚动条也做成金色 */
+html[data-skin="royal"] .week-scroll { scrollbar-color: var(--gold-line) transparent; }
+html[data-skin="royal"] .week-scroll::-webkit-scrollbar-thumb { background: var(--gold-line); }
+
+/* 小组件模式：保留金边但收窄留白 */
+html[data-skin="royal"] body.widget-mode { background-image: none; background: var(--bg); }
+html[data-skin="royal"] body.widget-mode .hero::after { width: 34px; height: 34px; top: 10px; right: 12px; }
+html[data-skin="royal"] body.widget-mode .hero::before { inset: 5px; }
+html[data-skin="royal"] body.widget-mode .panel::before { inset: 4px; background-size: 16px 16px; }
+
+/* 深色主题下的细节修正 */
+html[data-skin="royal"][data-theme="dark"] .panel,
+html[data-skin="royal"][data-theme="dark"] .sheet,
+html[data-skin="royal"][data-theme="dark"] .reminder {
+  background-image:
+    linear-gradient(180deg, rgba(34, 26, 56, .94), rgba(28, 21, 46, .96)),
+    url("../assets/royal/parchment.webp");
+  background-blend-mode: normal, overlay;
+}
+html[data-skin="royal"][data-theme="dark"] .tabbar { background: linear-gradient(180deg, #241c3d, #1a1430); }
+html[data-skin="royal"][data-theme="dark"] .chip-btn,
+html[data-skin="royal"][data-theme="dark"] .text-btn.bordered,
+html[data-skin="royal"][data-theme="dark"] .mini-btn,
+html[data-skin="royal"][data-theme="dark"] input[type="text"],
+html[data-skin="royal"][data-theme="dark"] input[type="url"],
+html[data-skin="royal"][data-theme="dark"] input[type="date"],
+html[data-skin="royal"][data-theme="dark"] input[type="time"],
+html[data-skin="royal"][data-theme="dark"] input[type="number"],
+html[data-skin="royal"][data-theme="dark"] select,
+html[data-skin="royal"][data-theme="dark"] textarea,
+html[data-skin="royal"][data-theme="dark"] .period-row,
+html[data-skin="royal"][data-theme="dark"] .session-row,
+html[data-skin="royal"][data-theme="dark"] .course-card,
+html[data-skin="royal"][data-theme="dark"] .notice {
+  background-image: linear-gradient(180deg, #2a2145, #221a39);
+  color: var(--ink);
+}
+html[data-skin="royal"][data-theme="dark"] .wk-head { background: linear-gradient(180deg, #2a2145, #231b3b); }
+html[data-skin="royal"][data-theme="dark"] .wk-times { background: linear-gradient(180deg, #271f3f, #221a38); }
+html[data-skin="royal"][data-theme="dark"] .wk-head.is-today { background: linear-gradient(180deg, #4a3a22, #3a2c18); }
+html[data-skin="royal"][data-theme="dark"] .wk-block {
+  background:
+    linear-gradient(180deg, rgba(38, 29, 60, .55), rgba(30, 23, 48, .4)),
+    color-mix(in oklab, var(--tint) 22%, #221a39);
+}
+html[data-skin="royal"][data-theme="dark"] .tl-card,
+html[data-skin="royal"][data-theme="dark"] .tl-item.is-now .tl-card {
+  background-image: linear-gradient(180deg, #2b2247, #241c3b);
+}
+html[data-skin="royal"][data-theme="dark"] .bring-chip,
+html[data-skin="royal"][data-theme="dark"] .tl-bring span,
+html[data-skin="royal"][data-theme="dark"] .course-bring span {
+  background-image: linear-gradient(180deg, #32284f, #292140);
+  color: var(--ink-2);
+}
+html[data-skin="royal"][data-theme="dark"] .sess-list li { background: linear-gradient(180deg, #2b2247, #241c3b); }
+html[data-skin="royal"][data-theme="dark"] .sheet-head { background: linear-gradient(180deg, #392b63, #241b3d); }
+html[data-skin="royal"][data-theme="dark"] .sheet-foot { background: linear-gradient(180deg, #2a2145, #221a39); }
+html[data-skin="royal"][data-theme="dark"] .brand-text h1 { color: var(--gold-2); }
+html[data-skin="royal"][data-theme="dark"] .panel-head h2,
+html[data-skin="royal"][data-theme="dark"] .side-title,
+html[data-skin="royal"][data-theme="dark"] .course-title h3,
+html[data-skin="royal"][data-theme="dark"] .empty-state p,
+html[data-skin="royal"][data-theme="dark"] .switch-text b,
+html[data-skin="royal"][data-theme="dark"] #about-body h3,
+html[data-skin="royal"][data-theme="dark"] .sess-day,
+html[data-skin="royal"][data-theme="dark"] .notice b { color: var(--gold-2); }
+html[data-skin="royal"][data-theme="dark"] .text-btn.bordered,
+html[data-skin="royal"][data-theme="dark"] .chip-btn { color: var(--ink); }
+html[data-skin="royal"][data-theme="dark"] .tl-time b { color: var(--ink-2); }
+html[data-skin="royal"][data-theme="dark"] .hero-course { filter: drop-shadow(0 1px 0 rgba(0, 0, 0, .35)); }
+html[data-skin="royal"][data-theme="dark"] .wk-block b { color: color-mix(in oklab, var(--tint) 60%, #f3e7cc); }
+html[data-skin="royal"][data-theme="dark"] .tl-dot { background: #2a2145; }
+
+@media (prefers-color-scheme: dark) {
+  html[data-skin="royal"][data-theme="auto"] .panel,
+  html[data-skin="royal"][data-theme="auto"] .sheet,
+  html[data-skin="royal"][data-theme="auto"] .reminder {
+    background-image:
+      linear-gradient(180deg, rgba(34, 26, 56, .94), rgba(28, 21, 46, .96)),
+      url("../assets/royal/parchment.webp");
+    background-blend-mode: normal, overlay;
+  }
+  html[data-skin="royal"][data-theme="auto"] .tabbar { background: linear-gradient(180deg, #241c3d, #1a1430); }
+  html[data-skin="royal"][data-theme="auto"] .chip-btn,
+  html[data-skin="royal"][data-theme="auto"] .text-btn.bordered,
+  html[data-skin="royal"][data-theme="auto"] .mini-btn,
+  html[data-skin="royal"][data-theme="auto"] input[type="text"],
+  html[data-skin="royal"][data-theme="auto"] input[type="url"],
+  html[data-skin="royal"][data-theme="auto"] input[type="date"],
+  html[data-skin="royal"][data-theme="auto"] input[type="time"],
+  html[data-skin="royal"][data-theme="auto"] input[type="number"],
+  html[data-skin="royal"][data-theme="auto"] select,
+  html[data-skin="royal"][data-theme="auto"] textarea,
+  html[data-skin="royal"][data-theme="auto"] .period-row,
+  html[data-skin="royal"][data-theme="auto"] .session-row,
+  html[data-skin="royal"][data-theme="auto"] .course-card,
+  html[data-skin="royal"][data-theme="auto"] .notice {
+    background-image: linear-gradient(180deg, #2a2145, #221a39);
+    color: var(--ink);
+  }
+  html[data-skin="royal"][data-theme="auto"] .wk-head { background: linear-gradient(180deg, #2a2145, #231b3b); }
+  html[data-skin="royal"][data-theme="auto"] .wk-times { background: linear-gradient(180deg, #271f3f, #221a38); }
+  html[data-skin="royal"][data-theme="auto"] .wk-head.is-today { background: linear-gradient(180deg, #4a3a22, #3a2c18); }
+  html[data-skin="royal"][data-theme="auto"] .wk-block {
+    background:
+      linear-gradient(180deg, rgba(38, 29, 60, .55), rgba(30, 23, 48, .4)),
+      color-mix(in oklab, var(--tint) 22%, #221a39);
+  }
+  html[data-skin="royal"][data-theme="auto"] .tl-card,
+  html[data-skin="royal"][data-theme="auto"] .tl-item.is-now .tl-card {
+    background-image: linear-gradient(180deg, #2b2247, #241c3b);
+  }
+  html[data-skin="royal"][data-theme="auto"] .bring-chip,
+  html[data-skin="royal"][data-theme="auto"] .tl-bring span,
+  html[data-skin="royal"][data-theme="auto"] .course-bring span {
+    background-image: linear-gradient(180deg, #32284f, #292140);
+    color: var(--ink-2);
+  }
+  html[data-skin="royal"][data-theme="auto"] .sess-list li { background: linear-gradient(180deg, #2b2247, #241c3b); }
+  html[data-skin="royal"][data-theme="auto"] .sheet-head { background: linear-gradient(180deg, #392b63, #241b3d); }
+  html[data-skin="royal"][data-theme="auto"] .sheet-foot { background: linear-gradient(180deg, #2a2145, #221a39); }
+  html[data-skin="royal"][data-theme="auto"] .brand-text h1 { color: var(--gold-2); }
+  html[data-skin="royal"][data-theme="auto"] .panel-head h2,
+  html[data-skin="royal"][data-theme="auto"] .side-title,
+  html[data-skin="royal"][data-theme="auto"] .course-title h3,
+  html[data-skin="royal"][data-theme="auto"] .empty-state p,
+  html[data-skin="royal"][data-theme="auto"] .switch-text b,
+  html[data-skin="royal"][data-theme="auto"] #about-body h3,
+  html[data-skin="royal"][data-theme="auto"] .sess-day,
+  html[data-skin="royal"][data-theme="auto"] .notice b { color: var(--gold-2); }
+  html[data-skin="royal"][data-theme="auto"] .text-btn.bordered,
+  html[data-skin="royal"][data-theme="auto"] .chip-btn { color: var(--ink); }
+  html[data-skin="royal"][data-theme="auto"] .tl-time b { color: var(--ink-2); }
+  html[data-skin="royal"][data-theme="auto"] .wk-block b { color: color-mix(in oklab, var(--tint) 60%, #f3e7cc); }
+  html[data-skin="royal"][data-theme="auto"] .tl-dot { background: #2a2145; }
+}
+
+/* 小屏微调 */
+@media (max-width: 720px) {
+  html[data-skin="royal"] .brand-text h1 { font-size: 21px; letter-spacing: .1em; }
+  html[data-skin="royal"] .hero { border-radius: 18px; }
+  html[data-skin="royal"] .hero::before { inset: 5px; }
+  html[data-skin="royal"] .hero::after { width: 36px; height: 36px; top: 10px; right: 12px; }
+  html[data-skin="royal"] .panel::before { background-size: 17px 17px; }
+  html[data-skin="royal"] .tab { letter-spacing: .1em; }
+  html[data-skin="royal"] .hero-course { letter-spacing: .01em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-skin="royal"] .hero-course { filter: none; }
+}
+
+
+/* ============================================================ 补充：纹章装饰细节 */
+html[data-skin="royal"] .brand-text h1::after {
+  content: "皇家典藏";
+  font-family: var(--font-kai);
+  font-size: 9.5px;
+  font-weight: 400;
+  letter-spacing: .2em;
+  color: var(--gold-deep);
+  border: 1px solid var(--gold-line);
+  border-radius: 3px;
+  padding: 1px 5px;
+  margin-left: 4px;
+  vertical-align: 6px;
+  opacity: .9;
+}
+
+html[data-skin="royal"] #dlg-about .sheet-head,
+html[data-skin="royal"] #dlg-course .sheet-head { position: relative; overflow: hidden; }
+html[data-skin="royal"] #dlg-about .sheet-head::after {
+  content: "";
+  position: absolute;
+  right: 56px;
+  top: 50%;
+  width: 42px;
+  height: 42px;
+  margin-top: -21px;
+  background: url("../assets/royal/rose-window.webp") center / contain no-repeat;
+  opacity: .55;
+  pointer-events: none;
+}
+
+html[data-skin="royal"] .panel-head {
+  position: relative;
+}
+html[data-skin="royal"] .panel-head::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -7px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-line) 18%, var(--gold-line) 82%, transparent);
+  opacity: .7;
+}
+
+html[data-skin="royal"] .panel,
+html[data-skin="royal"] .course-card,
+html[data-skin="royal"] .sheet,
+html[data-skin="royal"] .reminder { background-size: auto, cover; }
+
+html[data-skin="royal"] .empty-emblem {
+  width: 54px;
+  height: 54px;
+  background-size: contain;
+  filter: drop-shadow(0 3px 8px rgba(120, 85, 20, .25));
+}
+
+/* 手机端：城堡靠右，让文字区域保持暗色可读 */
+@media (max-width: 720px) {
+  html[data-skin="royal"] .hero { background-position: 72% center; }
+  html[data-skin="royal"] .brand-text h1::after { font-size: 8.5px; letter-spacing: .14em; }
+}
+
+/* 用生成的金色分隔纹替代纯色细线 */
+html[data-skin="royal"] .panel-head::after {
+  height: 13px;
+  bottom: -9px;
+  background: var(--divider-img) center / contain no-repeat;
+  opacity: .45;
+  border: 0;
+}
+
+/* ============================================================ 视觉修正 v2 */
+/* 1) Hero 右上角的皇冠会和倒计时打架：去掉，皇冠留给面板标题 */
+html[data-skin="royal"] .hero::after { display: none; }
+
+/* 2) 右侧倒计时压一层暗色晕影，保证在亮城堡上也能读 */
+html[data-skin="royal"] .hero-side {
+  padding: 8px 6px 8px 22px;
+  border-radius: 18px;
+  background:
+    radial-gradient(120% 130% at 82% 30%, rgba(10, 7, 24, .72) 0%, rgba(10, 7, 24, .34) 52%, rgba(10, 7, 24, 0) 78%);
+}
+html[data-skin="royal"] .cd-label,
+html[data-skin="royal"] .cd-dial b,
+html[data-skin="royal"] .cd-sub { text-shadow: 0 2px 12px rgba(8, 5, 20, .85), 0 1px 2px rgba(8, 5, 20, .7); }
+html[data-skin="royal"] .cd-dial i { text-shadow: 0 1px 6px rgba(8, 5, 20, .8); }
+
+/* 3) 城堡主视觉整体再压暗一点，文字更稳 */
+html[data-skin="royal"] .hero {
+  background:
+    linear-gradient(96deg, rgba(17, 11, 33, .98) 0%, rgba(28, 19, 52, .95) 38%, rgba(30, 21, 57, .8) 66%, rgba(18, 12, 34, .62) 100%),
+    url("../assets/royal/hero-castle.webp") right center / cover no-repeat,
+    linear-gradient(160deg, #241a44, #120d26);
+}
+@media (max-width: 720px) {
+  html[data-skin="royal"] .hero-side {
+    padding: 8px 10px;
+    background: radial-gradient(90% 120% at 55% 40%, rgba(10, 7, 24, .62) 0%, rgba(10, 7, 24, .18) 70%, rgba(10, 7, 24, 0) 90%);
+  }
+}
+
+/* ============================================================ 视觉修正 v3 */
+/* 深色主题下深红需要提亮，否则「还有 N 分钟」在夜堡底上读不清 */
+html[data-skin="royal"][data-theme="dark"] { --crimson: #e08a8a; --crimson-2: #f0b3ad; }
+@media (prefers-color-scheme: dark) {
+  html[data-skin="royal"][data-theme="auto"] { --crimson: #e08a8a; --crimson-2: #f0b3ad; }
+}
+html[data-skin="royal"] .panel-head::after { height: 11px; opacity: .35; bottom: -8px; }
+html[data-skin="royal"] .reminder.kind-sign::after { filter: drop-shadow(0 3px 6px rgba(80, 10, 20, .28)); }

@@ -1,0 +1,32 @@
+{
+  "jobs": [
+    {
+      "out": "class-tick/assets/teacher/raw/full.png",
+      "size": "1024x1536",
+      "quality": "high",
+      "model": "gpt-image-2",
+      "prompt": "High-quality Japanese anime character illustration (modern TV anime style, clean lineart, soft cel shading, elegant highlight rendering). Original character: a graceful young royal tutor woman, age around 24, long silver-blonde hair with a side braid and a small gold crown hairpin, violet eyes, gentle composed expression with a faint smile, wearing an elegant royal navy-blue tutor uniform with gold trim, short white cape with gold clasp, white gloves, subtle rose embroidery. Full-body standing pose, holding a rolled parchment scroll with both hands, dignified but warm posture, facing viewer. Flat pure white background (#ffffff), no text, no watermark, no other characters, centered, complete figure visible with margin."
+    },
+    {
+      "out": "class-tick/assets/teacher/raw/bust.png",
+      "size": "1024x1024",
+      "quality": "high",
+      "model": "gpt-image-2",
+      "prompt": "High-quality Japanese anime character illustration (modern TV anime style, clean lineart, soft cel shading). Original character: a graceful young royal tutor woman, age around 24, long silver-blonde hair with a side braid and a small gold crown hairpin, violet eyes, warm gentle smile, wearing an elegant royal navy-blue tutor uniform with gold trim, short white cape with gold clasp, white gloves, subtle rose embroidery. Upper-body three-quarter portrait, looking at viewer, hands elegantly folded. Flat pure white background (#ffffff), no text, no watermark, no other characters, centered with margin."
+    },
+    {
+      "out": "class-tick/assets/teacher/raw/thinking.png",
+      "size": "1024x1024",
+      "quality": "high",
+      "model": "gpt-image-2",
+      "prompt": "High-quality Japanese anime character illustration (modern TV anime style, clean lineart, soft cel shading). Original character: a graceful young royal tutor woman, age around 24, long silver-blonde hair with a side braid and a small gold crown hairpin, violet eyes, thoughtful expression with one finger lightly touching her chin, slight knowing smile, wearing an elegant royal navy-blue tutor uniform with gold trim, short white cape with gold clasp, white gloves. Upper-body portrait, slightly tilted head, looking at viewer. Flat pure white background (#ffffff), no text, no watermark, no other characters, centered with margin."
+    },
+    {
+      "out": "class-tick/assets/teacher/raw/chibi.png",
+      "size": "1024x1024",
+      "quality": "high",
+      "model": "gpt-image-2",
+      "prompt": "High-quality super-deformed chibi anime mascot illustration, sticker style, clean bold lineart, soft cel shading. Original character: a cute chibi royal tutor girl with a big head and small body, long silver-blonde hair with side braid and tiny gold crown hairpin, big violet eyes, cheerful smile, wearing a miniature royal navy-blue tutor uniform with gold trim and white cape, holding a tiny gold crown in both hands. Flat pure white background (#ffffff), no text, no watermark, centered, full mascot visible with generous margin."
+    }
+  ]
+}

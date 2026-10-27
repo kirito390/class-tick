@@ -1,0 +1,8 @@
+node_modules/
+push-data/
+native/www/
+android/.gradle/
+android/app/build/
+android/build/
+assets/opt/
+*.log

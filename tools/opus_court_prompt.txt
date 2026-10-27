@@ -1,0 +1,22 @@
+你是《课刻 ClassTick》的视觉总监。请先读项目现有文件：README.md、docs/royal-art-direction.md、docs/royal-tutor.md、assets/royal/raw/ 与 assets/teacher/raw/ 里的图片、assets/royal.css、royal-polish.css、teacher.css、assets/app.js 的 hero/teacher 相关代码。
+
+任务：为「城堡与王廷」扩展做视觉与文案方案，并写成一个新文件 docs/royal-court.md（只写这一个文件，不要改代码、不要动其他文件）。
+
+背景：课表应用是皇室典藏风格（深蓝+鎏金+羊皮纸+王室紫），已有纹章图标、城堡主视觉、皇家导师艾莉丝（银金发、紫瞳、三套礼服）。这次要新增：城堡图标、骑士、国王、王后、以及一套“魔女”导师服装；整体气质参考《魔女之旅》（Wandering Witch: The Journey of Elaina）——欧式奇幻、柔和线条、水彩感的天空与旅行感、优雅但不幼态。注意 IP 安全：只借鉴气质与意象，不复制该作角色/服装/标志，角色为原创。
+
+请在 docs/royal-court.md 中包含：
+
+1. 视觉方向（200 字内）：色调、线条、光影、如何与现有皇室 UI 融合；明确参考《魔女之旅》的哪些气质（旅行、欧式小镇、魔女帽与扫帚、柔和天空），以及不做什么（不复制角色、不幼态、不赛博）。
+2. GPT-Image-2 出图 prompt 清单（英文 prompt，逐条可复制），共 5 条：
+   - castle crest icon（城堡纹章图标，透明/纯白底，适合 512 图标，细节适中）
+   - knight guardian（骑士守卫，全身，长枪+盾，银蓝铠甲+金边+深蓝披风，站姿）
+   - king（国王，全身，王冠、权杖、深红/金袍，优雅威严，不要老态）
+   - queen（王后，全身，王冠、优雅礼服、金饰，温柔高贵）
+   - witch outfit for Elise（艾莉丝的魔女装：白色宽檐魔女帽+金色星饰，黑紫渐变长袍内衬星空，手持扫帚，银金发紫瞳，原创，不复制 Elaina 的脸/服装）
+   每条 prompt 要求：anime illustration, soft watercolor, clean line art, European fantasy, elegant, full body, centered, solid pure white background, no text/watermark, 不要多余角色；注明建议尺寸与质量。
+3. 组件落位方案：header 城堡徽记、hero 两侧守卫（骑士/国王与王后）、footer 王廷一行、「王廷」收藏面板、魔女换装入口；各自在桌面/手机的显示策略与降级方案。
+4. 动效方案：CSS keyframes 名称、时长、缓动、prefers-reduced-motion 处理；避免影响阅读。
+5. 皇家文案：城堡/骑士/国王/王后/魔女的中文名、英文名、一句铭文/motto（中英各一），以及王廷面板的介绍文案（每项 1-2 句，优雅克制，不要中二堆砌）。
+6. 验收清单：图片加载、透明底、尺寸/体积上限、响应式、动效降级、IP 安全、可访问性。
+
+写完后只回复一句：docs/royal-court.md 已完成。不要输出其他内容。

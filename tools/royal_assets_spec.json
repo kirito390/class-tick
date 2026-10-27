@@ -1,0 +1,60 @@
+{
+  "jobs": [
+    {
+      "out": "class-tick/assets/royal/raw/icon.png",
+      "size": "1024x1024",
+      "quality": "high",
+      "model": "gpt-image-2",
+      "prompt": "A luxurious app icon for a royal fantasy course schedule app. Deep midnight royal purple background (#1b1a40) with a very subtle gold damask pattern. Centered: an ornate antique gold crown above a heraldic shield; inside the shield a small ivory castle silhouette with three towers and a crescent moon; a thin gold ribbon banner beneath. Flat vector illustration, bold clean shapes, antique gold foil linework (#c9a24a), symmetrical centered composition, generous margins, no text, no letters, no watermark. Square."
+    },
+    {
+      "out": "class-tick/assets/royal/raw/hero-castle.png",
+      "size": "1536x1024",
+      "quality": "medium",
+      "model": "gpt-image-2",
+      "prompt": "Wide cinematic storybook illustration of a majestic fairy-tale royal castle on a cliff at night: multiple elegant spires, fluttering crimson and gold banners, warmly lit golden windows, a subtle crescent moon and stars in a deep midnight blue-purple sky, dark mountain silhouettes, painterly Disney-inspired elegance with epic fantasy grandeur, warm gold rim light, atmospheric mist below. Composition: castle on the right half, open darker sky on the left for text overlay. No text, no characters, no watermark."
+    },
+    {
+      "out": "class-tick/assets/royal/raw/parchment.png",
+      "size": "1536x1024",
+      "quality": "medium",
+      "model": "gpt-image-2",
+      "prompt": "Ancient parchment paper texture, warm ivory cream color (#f3e8cd), fine fibers, soft mottling, faint water stains, very subtle aged edges, flat top-down scan, high resolution, evenly lit, no text, no objects, seamless background texture."
+    },
+    {
+      "out": "class-tick/assets/royal/raw/corner.png",
+      "size": "1024x1024",
+      "quality": "medium",
+      "model": "gpt-image-2",
+      "prompt": "An elegant gold filigree corner ornament for a royal frame: symmetrical scrollwork vine with a tiny crown at the tip, antique gold line art (#c9a24a), isolated on a pure white background, flat vector style, sharp clean lines, no text, no shadow, generous white margin."
+    },
+    {
+      "out": "class-tick/assets/royal/raw/crown.png",
+      "size": "1024x1024",
+      "quality": "medium",
+      "model": "gpt-image-2",
+      "prompt": "An ornate royal crown emblem in antique gold with small jewels (crimson ruby, sapphire blue), delicate filigree details, isolated on a pure white background, flat vector illustration, front view, perfectly symmetrical, generous white margin, no text, no letters, no shadow."
+    },
+    {
+      "out": "class-tick/assets/royal/raw/seal.png",
+      "size": "1024x1024",
+      "quality": "medium",
+      "model": "gpt-image-2",
+      "prompt": "Top-down red wax seal stamp with an embossed golden crown emblem in the center, irregular melted wax edges, rich crimson red wax (#7c1f2c), realistic texture, isolated on a pure white background, centered, generous white margin, no text, no letters."
+    },
+    {
+      "out": "class-tick/assets/royal/raw/divider.png",
+      "size": "1536x1024",
+      "quality": "medium",
+      "model": "gpt-image-2",
+      "prompt": "A horizontal gold filigree divider ornament for a royal certificate: symmetrical scrollwork with a small crown at the center, antique gold line art (#c9a24a), isolated on a pure white background, flat vector style, wide centered composition, no text, no shadow."
+    },
+    {
+      "out": "class-tick/assets/royal/raw/rose-window.png",
+      "size": "1024x1024",
+      "quality": "medium",
+      "model": "gpt-image-2",
+      "prompt": "A circular gothic stained glass rose window with jewel tones (royal purple, crimson, gold, emerald) and gold lead lines, symmetrical, flat illustration, isolated on a pure white background, centered, generous white margin, no text, no letters."
+    }
+  ]
+}

@@ -1,0 +1,719 @@
+/* ============================================================
+   课刻 ClassTick · 皇家导师艾莉丝（可交互课表管家）
+   立绘 + 对话面板 + 情境提示气泡
+   ============================================================ */
+
+.teacher-dock {
+  position: fixed;
+  left: 22px;
+  bottom: 22px;
+  z-index: 70;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+.teacher-dock[hidden] { display: none; }
+
+/* 悬浮头像按钮 */
+.teacher-fab {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 30%, #3a2b63 0%, #241a44 70%);
+  box-shadow:
+    0 0 0 2px var(--gold, #b98a2f),
+    0 0 0 5px color-mix(in oklab, var(--surface, #fbf4e1) 88%, transparent),
+    0 0 0 6px var(--gold, #b98a2f),
+    0 12px 26px rgba(40, 24, 10, .3);
+  cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease;
+  animation: teacher-bob 5s ease-in-out infinite;
+}
+.teacher-fab:hover { transform: translateY(-3px) scale(1.03); }
+.teacher-fab:active { transform: translateY(-1px) scale(.99); }
+.teacher-fab-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  transform: scale(1.06);
+}
+.teacher-fab-ring {
+  position: absolute;
+  inset: -7px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in oklab, var(--gold, #b98a2f) 55%, transparent);
+  animation: teacher-ring 3.2s ease-out infinite;
+  pointer-events: none;
+}
+.teacher-fab-dot {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #7ec8a3;
+  border: 2px solid var(--surface, #fbf4e1);
+  box-shadow: 0 0 0 1px var(--gold, #b98a2f);
+}
+@keyframes teacher-bob {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -4px; }
+}
+@keyframes teacher-ring {
+  0% { transform: scale(.96); opacity: .9; }
+  70% { transform: scale(1.12); opacity: 0; }
+  100% { transform: scale(1.12); opacity: 0; }
+}
+
+/* 情境气泡 */
+.teacher-bubble {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 6px);
+  width: min(300px, calc(100vw - 36px));
+  padding: 13px 15px 11px;
+  border-radius: 14px 14px 14px 4px;
+  background:
+    linear-gradient(180deg, rgba(255, 251, 240, .98), rgba(247, 236, 213, .98));
+  border: 1px solid var(--gold, #b98a2f);
+  box-shadow:
+    0 0 0 2px rgba(255, 252, 240, .5) inset,
+    0 14px 32px rgba(50, 30, 10, .22);
+  font-family: var(--font-kai, "STKaiti", "KaiTi", serif);
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--ink-2, #4a3320);
+  animation: teacher-pop .28s cubic-bezier(.2, .8, .3, 1);
+}
+.teacher-bubble[hidden] { display: none; }
+.teacher-bubble::after {
+  content: "";
+  position: absolute;
+  left: 22px;
+  bottom: -8px;
+  width: 14px;
+  height: 14px;
+  background: inherit;
+  border-right: 1px solid var(--gold, #b98a2f);
+  border-bottom: 1px solid var(--gold, #b98a2f);
+  transform: rotate(45deg) skew(6deg, 6deg);
+  border-radius: 0 0 3px 0;
+}
+.teacher-bubble b { color: var(--ink, #2b1b0f); }
+.teacher-bubble p { margin: 0; }
+.teacher-bubble-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 8px;
+}
+@keyframes teacher-pop {
+  from { opacity: 0; transform: translateY(8px) scale(.96); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ============================================================ 对话面板 */
+
+.teacher-sheet {
+  width: min(940px, calc(100vw - 28px));
+  max-height: min(88vh, 720px);
+  height: min(640px, 86vh);
+  padding: 0;
+  border: 1px solid var(--gold, #b98a2f);
+  border-radius: 22px;
+  overflow: hidden;
+  background: var(--surface, #fbf4e1);
+  color: var(--ink, #2b1b0f);
+  box-shadow:
+    0 0 0 4px rgba(255, 252, 240, .3),
+    0 0 0 5px var(--gold-line, rgba(160, 118, 38, .5)),
+    0 30px 70px rgba(20, 10, 6, .45);
+  display: none;
+  grid-template-columns: 300px minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+}
+.teacher-sheet[open] { display: grid; }
+.teacher-stage,
+.teacher-chat { min-height: 0; height: 100%; }
+.teacher-chat { overflow: hidden; }
+.teacher-stage { overflow: hidden; }
+.teacher-sheet[open] { animation: teacher-sheet-in .3s cubic-bezier(.2, .8, .3, 1); }
+.teacher-sheet::backdrop {
+  background: rgba(19, 12, 36, .58);
+  backdrop-filter: blur(5px);
+}
+@keyframes teacher-sheet-in {
+  from { opacity: 0; transform: translateY(18px) scale(.985); }
+  to { opacity: 1; transform: none; }
+}
+
+/* 左侧立绘舞台 */
+.teacher-stage {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 24% 14%, rgba(255, 240, 205, .55) 0 1.2px, transparent 1.8px),
+    radial-gradient(circle at 68% 26%, rgba(255, 240, 205, .4) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 42% 42%, rgba(255, 240, 205, .32) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 80% 10%, rgba(255, 240, 205, .45) 0 1.2px, transparent 1.8px),
+    radial-gradient(120% 80% at 50% 0%, #3b2c63 0%, #241a44 46%, #150f2b 100%);
+  border-right: 1px solid var(--gold-line, rgba(160, 118, 38, .5));
+}
+.teacher-stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, transparent 55%, rgba(13, 8, 26, .85) 88%, rgba(13, 8, 26, .96) 100%);
+  pointer-events: none;
+}
+.teacher-art {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 112%;
+  height: 96%;
+  object-fit: contain;
+  object-position: bottom center;
+  filter: drop-shadow(0 12px 30px rgba(0, 0, 0, .45));
+  z-index: 1;
+}
+.teacher-stage-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: 34px 20px 16px;
+  background: linear-gradient(0deg, rgba(13, 8, 26, .94) 0%, rgba(13, 8, 26, .76) 46%, rgba(13, 8, 26, 0) 100%);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, .55);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  color: #f6e7c4;
+  font-family: var(--font-kai, "STKaiti", "KaiTi", serif);
+}
+.teacher-stage-caption span {
+  font-size: 10.5px;
+  letter-spacing: .28em;
+  color: var(--gold-3, #f7ecc9);
+  opacity: .8;
+}
+.teacher-stage-caption b {
+  font-family: var(--font-song, "STSong", "SimSun", serif);
+  font-size: 18px;
+  letter-spacing: .12em;
+  color: #f7e6bd;
+}
+.teacher-stage-caption i {
+  font-style: normal;
+  font-size: 11.5px;
+  color: rgba(240, 224, 190, .62);
+  letter-spacing: .04em;
+}
+
+/* 右侧对话区 */
+.teacher-chat {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background:
+    radial-gradient(120% 90% at 80% 0%, rgba(217, 180, 92, .10), transparent 60%),
+    var(--surface, #fbf4e1);
+}
+.teacher-head {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--gold-line, rgba(160, 118, 38, .4));
+  background: linear-gradient(180deg, rgba(255, 251, 240, .7), transparent);
+}
+.teacher-avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex: none;
+  box-shadow: 0 0 0 2px var(--gold, #b98a2f), 0 0 0 4px color-mix(in oklab, var(--surface, #fbf4e1) 85%, transparent);
+  background: #241a44;
+}
+.teacher-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.teacher-head-text { flex: 1; min-width: 0; }
+.teacher-head-text h2 {
+  font-family: var(--font-song, "STSong", "SimSun", serif);
+  font-size: 15.5px;
+  letter-spacing: .06em;
+  color: var(--royal, #241a44);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+.teacher-head-text h2::before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  flex: none;
+  background: url("../assets/royal/crown.webp") center / contain no-repeat;
+  opacity: .85;
+}
+.teacher-head-text p {
+  font-size: 11.5px;
+  color: var(--muted, #7d6547);
+  font-family: var(--font-kai, "STKaiti", "KaiTi", serif);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.teacher-head-actions { display: flex; gap: 2px; flex: none; }
+.teacher-head-actions .icon-btn { width: 30px; height: 30px; font-size: 15px; }
+
+/* 对话记录 */
+.teacher-log {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 16px 16px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold-line, rgba(160, 118, 38, .4)) transparent;
+}
+.teacher-log::-webkit-scrollbar { width: 7px; }
+.teacher-log::-webkit-scrollbar-thumb { background: var(--gold-line, rgba(160, 118, 38, .4)); border-radius: 8px; }
+
+.teacher-msg {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  max-width: 100%;
+  animation: teacher-msg-in .26s ease;
+}
+@keyframes teacher-msg-in {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: none; }
+}
+.teacher-msg-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex: none;
+  margin-top: 2px;
+  box-shadow: 0 0 0 1.5px var(--gold-line, rgba(160, 118, 38, .5));
+}
+.teacher-msg-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.teacher-msg-body {
+  max-width: 82%;
+  padding: 10px 13px;
+  border-radius: 4px 14px 14px 14px;
+  background: linear-gradient(180deg, rgba(255, 252, 244, .96), rgba(248, 238, 217, .96));
+  border: 1px solid var(--gold-line, rgba(160, 118, 38, .35));
+  box-shadow: 0 0 0 1px rgba(255, 252, 240, .5) inset, 0 4px 12px rgba(60, 38, 10, .06);
+  font-family: var(--font-kai, "STKaiti", "KaiTi", serif);
+  font-size: 13.5px;
+  line-height: 1.72;
+  color: var(--ink-2, #4a3320);
+}
+.teacher-msg-body p { margin: 0 0 6px; }
+.teacher-msg-body p:last-child { margin-bottom: 0; }
+.teacher-msg-body b { color: var(--ink, #2b1b0f); }
+.teacher-msg-body .teacher-soft { font-size: 12.5px; color: var(--muted, #7d6547); }
+
+.teacher-msg.is-user { flex-direction: row-reverse; }
+.teacher-msg.is-user .teacher-msg-body {
+  border-radius: 14px 4px 14px 14px;
+  background: linear-gradient(180deg, #382a5e, #241a44);
+  border-color: rgba(217, 180, 92, .45);
+  color: #f6e7c4;
+  font-family: var(--font-kai, "STKaiti", "KaiTi", serif);
+}
+.teacher-msg.is-user .teacher-msg-body b { color: #f7ecc9; }
+
+.teacher-msg-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 9px;
+}
+.teacher-msg-actions .text-btn { font-family: var(--font-kai, "STKaiti", "KaiTi", serif); }
+
+.teacher-typing { display: inline-flex; gap: 4px; padding: 3px 2px; }
+.teacher-typing i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold, #b98a2f);
+  opacity: .45;
+  animation: teacher-dot 1.1s ease-in-out infinite;
+}
+.teacher-typing i:nth-child(2) { animation-delay: .16s; }
+.teacher-typing i:nth-child(3) { animation-delay: .32s; }
+@keyframes teacher-dot {
+  0%, 100% { opacity: .25; transform: translateY(0); }
+  40% { opacity: .95; transform: translateY(-3px); }
+}
+
+/* 快捷指令 */
+.teacher-quick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px 14px;
+  border-top: 1px dashed var(--gold-line, rgba(160, 118, 38, .35));
+  max-height: 78px;
+  overflow-y: auto;
+}
+.teacher-quick .text-btn {
+  padding: 5px 11px;
+  font-size: 11.5px;
+  font-family: var(--font-kai, "STKaiti", "KaiTi", serif);
+  background: linear-gradient(180deg, #fffaf0, #f4e7c8);
+  border: 1px solid var(--gold-line, rgba(160, 118, 38, .4));
+  color: var(--royal, #241a44);
+}
+.teacher-quick .text-btn:hover { border-color: var(--gold, #b98a2f); }
+
+/* 输入区 */
+.teacher-input {
+  display: flex;
+  gap: 8px;
+  padding: 10px 14px 13px;
+  border-top: 1px solid var(--gold-line, rgba(160, 118, 38, .4));
+  background: linear-gradient(180deg, rgba(248, 239, 219, .8), rgba(243, 231, 204, .9));
+}
+.teacher-input input {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid var(--gold-line, rgba(160, 118, 38, .45));
+  border-radius: 999px;
+  background: linear-gradient(180deg, #fffdf6, #faf1dc);
+  padding: 9px 15px;
+  font-family: var(--font-kai, "STKaiti", "KaiTi", serif);
+  font-size: 13px;
+  color: var(--ink, #2b1b0f);
+}
+.teacher-input input::placeholder { color: var(--muted-2, #a28b66); }
+.teacher-input input:focus {
+  outline: 0;
+  border-color: var(--gold, #b98a2f);
+  box-shadow: 0 0 0 3px rgba(185, 138, 47, .18);
+}
+.teacher-input .text-btn { flex: none; padding: 0 20px; border-radius: 999px; }
+
+/* ============================================================ 响应式 */
+
+@media (max-width: 860px) {
+  .teacher-sheet {
+    grid-template-columns: 1fr;
+    width: calc(100vw - 12px);
+    height: 90dvh;
+    max-height: 90dvh;
+  }
+  /* 手机端：立绘变成顶部横幅，换装也能看见 */
+  .teacher-sheet { grid-template-rows: 190px minmax(0, 1fr); }
+  .teacher-stage { display: block; height: 190px; border-right: 0; border-bottom: 1px solid var(--gold-line, rgba(160, 118, 38, .5)); }
+  .teacher-art { width: auto; height: 340px; bottom: -150px; left: 50%; }
+  .teacher-stage-caption { padding: 14px 16px 12px; background: linear-gradient(90deg, rgba(13, 8, 26, .95) 0%, rgba(13, 8, 26, .72) 42%, rgba(13, 8, 26, .08) 72%, transparent 100%); }
+  .teacher-stage-caption b { font-size: 16px; letter-spacing: .1em; }
+  .teacher-stage-caption i { font-size: 10px; }
+  .teacher-stage-caption .teacher-outfit-name { font-size: 8px; margin-top: 2px; }
+  .teacher-stage::after {
+    background:
+      linear-gradient(90deg, rgba(13, 8, 26, .94) 0%, rgba(13, 8, 26, .62) 34%, rgba(13, 8, 26, .05) 62%, transparent 100%),
+      linear-gradient(0deg, rgba(13, 8, 26, .65), transparent 60%);
+  }
+  .teacher-head { padding: 12px 14px; }
+  .teacher-avatar { width: 42px; height: 42px; }
+  .teacher-head-text h2 { font-size: 14.5px; }
+  .teacher-log { padding: 12px 12px 6px; }
+  .teacher-msg-body { max-width: 84%; font-size: 13px; padding: 9px 12px; }
+  .teacher-quick {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-height: none;
+    scrollbar-width: none;
+    padding: 8px 12px;
+  }
+  .teacher-quick::-webkit-scrollbar { display: none; }
+  .teacher-quick .text-btn { flex: none; }
+  .teacher-input { padding: 8px 12px 12px; }
+  .teacher-input .text-btn { padding: 0 16px; }
+}
+
+@media (max-width: 720px) {
+  .teacher-dock { left: 12px; bottom: calc(var(--tab-h, 66px) + 14px); }
+  .teacher-fab { width: 54px; height: 54px; }
+  .teacher-fab-ring { inset: -6px; }
+  .teacher-bubble { width: min(280px, calc(100vw - 28px)); font-size: 12.5px; }
+  body.widget-mode .teacher-dock { display: none !important; }
+}
+
+/* 深色夜堡 */
+html[data-skin="royal"][data-theme="dark"] .teacher-chat {
+  background:
+    radial-gradient(120% 90% at 80% 0%, rgba(217, 180, 92, .08), transparent 60%),
+    var(--surface, #1f1833);
+}
+html[data-skin="royal"][data-theme="dark"] .teacher-msg-body {
+  background: linear-gradient(180deg, #2b2247, #241c3a);
+  border-color: rgba(217, 180, 92, .32);
+  color: var(--ink-2, #ded6c8);
+}
+html[data-skin="royal"][data-theme="dark"] .teacher-msg-body b { color: #f3e7cc; }
+html[data-skin="royal"][data-theme="dark"] .teacher-quick .text-btn,
+html[data-skin="royal"][data-theme="dark"] .teacher-input input {
+  background: linear-gradient(180deg, #2f254c, #271f3f);
+  color: var(--ink, #f3e7cc);
+}
+html[data-skin="royal"][data-theme="dark"] .teacher-input {
+  background: linear-gradient(180deg, #241c3b, #1f1832);
+}
+html[data-skin="royal"][data-theme="dark"] .teacher-bubble {
+  background: linear-gradient(180deg, #2b2247, #241c3a);
+  color: var(--ink-2, #ded6c8);
+}
+html[data-skin="royal"][data-theme="dark"] .teacher-head {
+  background: linear-gradient(180deg, rgba(43, 34, 71, .7), transparent);
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-skin="royal"][data-theme="auto"] .teacher-chat {
+    background:
+      radial-gradient(120% 90% at 80% 0%, rgba(217, 180, 92, .08), transparent 60%),
+      var(--surface, #1f1833);
+  }
+  html[data-skin="royal"][data-theme="auto"] .teacher-msg-body {
+    background: linear-gradient(180deg, #2b2247, #241c3a);
+    border-color: rgba(217, 180, 92, .32);
+    color: var(--ink-2, #ded6c8);
+  }
+  html[data-skin="royal"][data-theme="auto"] .teacher-msg-body b { color: #f3e7cc; }
+  html[data-skin="royal"][data-theme="auto"] .teacher-quick .text-btn,
+  html[data-skin="royal"][data-theme="auto"] .teacher-input input {
+    background: linear-gradient(180deg, #2f254c, #271f3f);
+    color: var(--ink, #f3e7cc);
+  }
+  html[data-skin="royal"][data-theme="auto"] .teacher-input {
+    background: linear-gradient(180deg, #241c3b, #1f1832);
+  }
+  html[data-skin="royal"][data-theme="auto"] .teacher-bubble {
+    background: linear-gradient(180deg, #2b2247, #241c3a);
+    color: var(--ink-2, #ded6c8);
+  }
+  html[data-skin="royal"][data-theme="auto"] .teacher-head {
+    background: linear-gradient(180deg, rgba(43, 34, 71, .7), transparent);
+  }
+}
+
+/* 学院纸感皮肤下的轻微调整 */
+html[data-skin="classic"] .teacher-fab {
+  background: radial-gradient(circle at 50% 32%, #2a7a66 0%, #1f6f5c 70%);
+  box-shadow: 0 0 0 2px #1f6f5c, 0 0 0 5px #fffdf7, 0 0 0 6px rgba(31, 111, 92, .4), 0 12px 26px rgba(20, 50, 40, .25);
+}
+html[data-skin="classic"] .teacher-fab-dot { border-color: #fffdf7; }
+html[data-skin="classic"] .teacher-head-text h2 { color: var(--ink, #1b1a17); }
+html[data-skin="classic"] .teacher-head-text h2::before { display: none; }
+html[data-skin="classic"] .teacher-msg.is-user .teacher-msg-body {
+  background: linear-gradient(180deg, #26795f, #1f6f5c);
+  border-color: rgba(255, 253, 247, .35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .teacher-fab, .teacher-fab-ring { animation: none; }
+  .teacher-bubble, .teacher-msg, .teacher-sheet[open] { animation: none; }
+  .teacher-typing i { animation: none; opacity: .7; }
+}
+
+
+/* 空白聊天区的皇冠水印 + 日志焦点 */
+.teacher-log::after {
+  content: "";
+  display: block;
+  height: 66px;
+  margin-top: auto;
+  flex: none;
+  background: url("../assets/royal/crown.webp") center / 64px no-repeat;
+  opacity: .16;
+  pointer-events: none;
+}
+.teacher-log:focus { outline: none; }
+.teacher-msg-avatar { background: #241a44; }
+
+
+/* 夜堡主题：导师标题与副标题提亮 */
+html[data-skin="royal"][data-theme="dark"] .teacher-head-text h2 { color: var(--gold-2, #efd79a); }
+html[data-skin="royal"][data-theme="dark"] .teacher-head-text p { color: var(--muted, #b3a184); }
+@media (prefers-color-scheme: dark) {
+  html[data-skin="royal"][data-theme="auto"] .teacher-head-text h2 { color: var(--gold-2, #efd79a); }
+  html[data-skin="royal"][data-theme="auto"] .teacher-head-text p { color: var(--muted, #b3a184); }
+}
+
+
+/* 关闭状态必须隐藏（覆盖作者 display） */
+.teacher-sheet:not([open]) { display: none !important; }
+.teacher-ai-badge[hidden] { display: none !important; }
+
+/* 立绘与说明的比例：给底部说明留出干净的区域 */
+.teacher-art { height: 88%; bottom: 58px; }
+.teacher-stage-caption { padding: 16px 20px 18px; }
+.teacher-stage-caption b { font-size: 19px; }
+.teacher-stage-caption .teacher-outfit-name { margin-top: 4px; }
+
+
+/* 手机端横幅最终比例：显示头部到腰际 */
+@media (max-width: 860px) {
+  .teacher-stage { height: 190px; }
+  .teacher-art { height: 330px; bottom: -138px; width: auto; left: 64%; }
+  .teacher-stage-caption { padding-top: 16px; }
+}
+
+
+/* ============================================================ 关闭入口与反馈（v1.3.1） */
+.teacher-head-actions { gap: 2px; align-items: center; }
+.teacher-head-actions .icon-btn { width: 32px; height: 32px; }
+.teacher-head-actions .icon-btn[data-action="close-dialog"] {
+  width: 36px;
+  height: 36px;
+  font-size: 21px;
+  color: var(--ink-2, #4a3320);
+  background: rgba(185, 138, 47, .10);
+  border: 1px solid var(--gold-line, rgba(160, 118, 38, .4));
+  border-radius: 50%;
+}
+.teacher-head-actions .icon-btn[data-action="close-dialog"]:hover {
+  background: var(--accent-soft, #f4ddd2);
+  color: var(--crimson, #7c1f2c);
+}
+.teacher-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0 14px 12px;
+  background: linear-gradient(180deg, rgba(248, 239, 219, .8), rgba(243, 231, 204, .9));
+}
+.teacher-foot .text-btn { flex: none; }
+.teacher-foot-tip {
+  font-family: var(--font-kai, "STKaiti", serif);
+  font-size: 10.5px;
+  color: var(--muted, #7d6547);
+  text-align: right;
+}
+.teacher-head-actions .icon-btn.is-flash {
+  animation: outfit-flash .62s ease;
+}
+@keyframes outfit-flash {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 180, 92, .55); }
+  35% { transform: scale(1.18) rotate(16deg); box-shadow: 0 0 0 7px rgba(217, 180, 92, .28); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 180, 92, 0); }
+}
+@media (max-width: 860px) {
+  .teacher-head-actions .icon-btn { width: 30px; height: 30px; }
+  .teacher-head-actions .icon-btn[data-action="close-dialog"] { width: 34px; height: 34px; font-size: 20px; }
+  .teacher-foot { padding: 0 12px 10px; }
+  .teacher-foot-tip { font-size: 9.5px; }
+}
+
+
+/* 窄屏标题不换行，避免头部变高压住关闭按钮 */
+@media (max-width: 420px) {
+  .teacher-head-text h2 { font-size: 13px; letter-spacing: 0; }
+  .teacher-ai-badge { display: none !important; }
+}
+
+
+/* 立绘可点击查看全身 */
+.teacher-stage { cursor: zoom-in; }
+.teacher-stage::marker { content: none; }
+.teacher-art-tip {
+  font-family: var(--font-kai, "STKaiti", serif);
+  font-size: 9.5px;
+  color: rgba(240, 224, 190, .55);
+  letter-spacing: .04em;
+}
+
+/* 全身立绘查看弹层 */
+.art-sheet {
+  width: min(600px, calc(100vw - 24px));
+  max-height: 94vh;
+}
+.art-sheet .sheet-body {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(90% 70% at 50% 0%, #3a2b63, #150f2b 70%);
+  overflow: hidden;
+}
+.art-sheet .art-full {
+  display: block;
+  max-width: 100%;
+  max-height: min(82vh, 900px);
+  object-fit: contain;
+  filter: drop-shadow(0 18px 40px rgba(0, 0, 0, .5));
+}
+@media (max-width: 860px) {
+  .art-sheet { width: calc(100vw - 12px); max-height: 94dvh; }
+  .art-sheet .art-full { max-height: 80dvh; }
+}
+
+
+/* ============================================================ Live2D-lite 2.0：表情帧与动作 */
+.teacher-expression {
+  position: absolute;
+  left: 50%;
+  bottom: 58px;
+  width: 112%;
+  height: 88%;
+  transform: translateX(-50%);
+  object-fit: contain;
+  object-position: bottom center;
+  opacity: 0;
+  transition: opacity .09s linear;
+  pointer-events: none;
+  z-index: 2;
+  filter: drop-shadow(0 18px 30px rgba(20, 10, 30, .28));
+}
+.teacher-stage-caption { z-index: 4; }
+.teacher-stage[data-motion="bow"] .teacher-art,
+.teacher-stage[data-motion="bow"] .teacher-expression { animation: tutor-bow 1s cubic-bezier(.2,.7,.3,1); }
+.teacher-stage[data-motion="nod"] .teacher-art,
+.teacher-stage[data-motion="nod"] .teacher-expression { animation: tutor-nod .8s ease; }
+.teacher-stage[data-motion="spin"] .teacher-art,
+.teacher-stage[data-motion="spin"] .teacher-expression { animation: tutor-spin 1.15s cubic-bezier(.3,.1,.3,1); }
+@keyframes tutor-bow {
+  0%, 100% { transform: translateX(-50%) rotate(0); }
+  45% { transform: translateX(-50%) translateY(7px) rotate(6deg); }
+}
+@keyframes tutor-nod {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  35%, 65% { transform: translateX(-50%) translateY(8px); }
+}
+@keyframes tutor-spin {
+  from { transform: translateX(-50%) rotate(0); }
+  to { transform: translateX(-50%) rotate(360deg); }
+}
+@media (max-width: 860px) {
+  .teacher-expression { height: 330px; bottom: -138px; left: 64%; width: 112%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .teacher-expression { transition: none; }
+  .teacher-stage[data-motion] .teacher-art,
+  .teacher-stage[data-motion] .teacher-expression { animation: none; }
+}

@@ -1,0 +1,11 @@
+{
+  "appId": "com.classtick.app",
+  "appName": "课刻 ClassTick",
+  "webDir": "native/www",
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": false
+  }
+}

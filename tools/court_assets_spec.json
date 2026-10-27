@@ -1,0 +1,34 @@
+{
+  "jobs": [
+    {
+      "prompt": "Anime illustration, soft watercolor, clean elegant line art, European fantasy royal court, a heraldic castle crest emblem: a slender ivory castle with three towers, navy blue enamel shield behind it, gold filigree, small gold crown above, tiny stars, refined and symmetrical, centered, isolated on solid pure white background, no text, no watermark, no extra characters, icon design, high detail",
+      "out": "assets/royal/raw/court/castle-crest.png",
+      "size": "1024x1024",
+      "quality": "medium"
+    },
+    {
+      "prompt": "Anime illustration, soft watercolor, clean elegant line art, European fantasy, an original royal knight guardian standing full body, silver-blue ornate plate armor with gold trim, deep navy cape, holding a tall ceremonial spear and a shield with a small castle emblem, calm dignified posture, silver hair short, no helmet so face is gentle and noble, centered, isolated on solid pure white background, no text, no watermark, no extra characters, full body visible from head to boots",
+      "out": "assets/royal/raw/court/knight.png",
+      "size": "1024x1536",
+      "quality": "medium"
+    },
+    {
+      "prompt": "Anime illustration, soft watercolor, clean elegant line art, European fantasy, an original elegant king standing full body, deep crimson and gold royal robes, ornate gold crown, holding a slender scepter, refined handsome middle-aged face, calm dignified expression, navy cape, centered, isolated on solid pure white background, no text, no watermark, no extra characters, full body visible from head to boots",
+      "out": "assets/royal/raw/court/king.png",
+      "size": "1024x1536",
+      "quality": "medium"
+    },
+    {
+      "prompt": "Anime illustration, soft watercolor, clean elegant line art, European fantasy, an original graceful queen standing full body, ivory and dusty-rose royal gown with gold embroidery, delicate gold crown, pearl jewelry, gentle noble expression, long silver-gold hair, holding a small bouquet or folded fan, centered, isolated on solid pure white background, no text, no watermark, no extra characters, full body visible from head to boots",
+      "out": "assets/royal/raw/court/queen.png",
+      "size": "1024x1536",
+      "quality": "medium"
+    },
+    {
+      "prompt": "Anime illustration, soft watercolor, clean elegant line art, European fantasy, an original elegant witch tutor full body, silver-gold long hair with side braid, violet eyes, white wide-brim witch hat with gold star ornaments, black-to-violet gradient robe with starry night lining and gold embroidery, holding a slender wooden broom, gentle mysterious smile, traveling witch aesthetic, inspired by European fantasy but an original character, centered, isolated on solid pure white background, no text, no watermark, no extra characters, full body visible from head to boots",
+      "out": "assets/teacher/raw/witch.png",
+      "size": "1024x1536",
+      "quality": "medium"
+    }
+  ]
+}

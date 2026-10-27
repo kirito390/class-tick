@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="auto" data-skin="royal">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>课刻 ClassTick · 皇家课程表</title>
+  <meta name="description" content="课刻 ClassTick 皇室典藏版：可安装到手机和电脑的皇家课程表小组件。今日朝程、每日诏书、课前鸣钟、课前 2 分钟落印签到，还有随身行囊清单。">
+  <meta name="theme-color" content="#241a44">
+  <link rel="preload" as="image" href="assets/royal/hero-castle.webp">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png" type="image/png">
+  <link rel="icon" href="icons/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="课刻">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/royal.css">
+  <link rel="stylesheet" href="assets/teacher.css">
+  <link rel="stylesheet" href="assets/royal-polish.css">
+  <link rel="stylesheet" href="assets/planner.css">
+  <link rel="stylesheet" href="assets/court.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <div class="royal-aura" aria-hidden="true"></div>
+  <div class="royal-dust" aria-hidden="true"></div>
+  <div class="app" id="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="logo" aria-hidden="true">
+          <svg viewBox="0 0 48 48" role="img">
+            <rect width="48" height="48" rx="14" fill="var(--brand)"></rect>
+            <rect x="10.5" y="14" width="27" height="24" rx="6" fill="var(--paper)"></rect>
+            <path d="M10.5 20a6 6 0 0 1 6-6h15a6 6 0 0 1 6 6v2h-27z" fill="var(--accent)"></path>
+            <rect x="17" y="26" width="14" height="3.2" rx="1.6" fill="var(--brand-deep)"></rect>
+            <rect x="17" y="31.4" width="8.5" height="3.2" rx="1.6" fill="var(--brand-deep)" opacity=".5"></rect>
+            <rect x="16" y="9" width="3.2" height="8" rx="1.6" fill="var(--paper)"></rect>
+            <rect x="28.8" y="9" width="3.2" height="8" rx="1.6" fill="var(--paper)"></rect>
+          </svg>
+          <span class="logo-royal"><img src="icons/icon-192.png" alt="" width="46" height="46"></span>
+        </span>
+        <div class="brand-text">
+          <p class="brand-eyebrow">Royal Class Registry · Tongji</p>
+          <h1>课刻 <span class="brand-en">ClassTick</span><span class="brand-castle" aria-hidden="true" title="晨星堡">
+            <img src="assets/royal/castle-badge.webp" alt="">
+          </span></h1>
+          <p id="brand-sub">正在读取课表…</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button class="chip-btn" id="btn-notify" data-action="notify" title="开启系统通知">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a5 5 0 0 0-5 5v3.2L5.6 15h12.8L17 11.2V8a5 5 0 0 0-5-5Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"></path><path d="M9.7 18a2.4 2.4 0 0 0 4.6 0" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path></svg>
+          <span id="notify-label">开启提醒</span>
+        </button>
+        <button class="chip-btn" id="btn-widget" data-action="open-widget" title="以小组件窗口打开">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"></rect><rect x="13" y="4" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"></rect><rect x="4" y="13" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"></rect><rect x="13" y="13" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"></rect></svg>
+          <span>小组件</span>
+        </button>
+        <button class="chip-btn accent" id="btn-install" data-action="install" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v10m0 0 4-4m-4 4-4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path><path d="M5 18h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
+          <span>安装</span>
+        </button>
+      </div>
+    </header>
+
+    <nav class="tabbar" id="tabbar" role="tablist" aria-label="主导航">
+      <button class="tab is-active" role="tab" aria-selected="true" data-tab="today">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.2" fill="none" stroke="currentColor" stroke-width="1.7"></circle><path d="M12 8.4V12l2.6 1.8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path></svg>
+        <span class="tab-cn">今日</span><em class="tab-en">Today</em>
+      </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="week">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5.5" width="16" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="1.7"></rect><path d="M4 10h16M9 3.6v3.4M15 3.6v3.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path></svg>
+        <span class="tab-cn">本周</span><em class="tab-en">Week</em>
+      </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="courses">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6.5A2.5 2.5 0 0 1 7.5 4H19v14H7.5A2.5 2.5 0 0 0 5 20.5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"></path><path d="M5 17.5V20.5h14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path></svg>
+        <span class="tab-cn">课程</span><em class="tab-en">Registry</em>
+      </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="planner">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.5h9.2L19 8.3v11.2H6z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"></path><path d="M9 9h6M9 12.4h6M9 15.8h4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path></svg>
+        <span class="tab-cn">日程</span><em class="tab-en">Planner</em>
+      </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="settings">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.7"></circle><path d="M19 12a7 7 0 0 0-.1-1.2l1.8-1.4-1.8-3.1-2.1.9a7 7 0 0 0-2-1.2L14.4 4h-3.6l-.4 2a7 7 0 0 0-2 1.2l-2.1-.9-1.8 3.1 1.8 1.4a7 7 0 0 0 0 2.4L4.5 14.6l1.8 3.1 2.1-.9a7 7 0 0 0 2 1.2l.4 2h3.6l.4-2a7 7 0 0 0 2-1.2l2.1.9 1.8-3.1-1.8-1.4c.1-.4.1-.8.1-1.2Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"></path></svg>
+        <span class="tab-cn">设置</span><em class="tab-en">Decree</em>
+      </button>
+    </nav>
+
+    <main id="main">
+      <section class="view is-active" id="view-today" data-view="today" role="tabpanel" aria-label="今日">
+        <div class="hero-slot" id="hero-slot"></div>
+        <section class="court-strip" aria-label="王廷">
+          <div class="court-copy">
+            <span class="court-eyebrow">The Royal Court</span>
+            <h2>王廷在侧</h2>
+            <p>晨星堡的王廷会在课表旁静静守候。他们不打扰，只在需要时出现。</p>
+            <button class="text-btn bordered tiny" data-action="court-open">王廷档案 →</button>
+          </div>
+          <div class="court-cards">
+            <button class="court-card" data-action="court-open" aria-label="查看王廷档案">
+              <span class="court-thumb"><img src="assets/royal/castle-badge.webp" alt=""></span>
+              <b>晨星堡</b><i>Castle Morningstar</i>
+            </button>
+            <button class="court-card" data-action="court-open" aria-label="查看王廷档案">
+              <span class="court-thumb"><img src="assets/royal/court-thumb-knight.webp" alt=""></span>
+              <b>银枪骑士</b><i>Sir Cedric</i>
+            </button>
+            <button class="court-card" data-action="court-open" aria-label="查看王廷档案">
+              <span class="court-thumb"><img src="assets/royal/court-thumb-king.webp" alt=""></span>
+              <b>奥瑞恩国王</b><i>King Orion</i>
+            </button>
+            <button class="court-card" data-action="court-open" aria-label="查看王廷档案">
+              <span class="court-thumb"><img src="assets/royal/court-thumb-queen.webp" alt=""></span>
+              <b>赛琳娜王后</b><i>Queen Selene</i>
+            </button>
+          </div>
+        </section>
+        <div class="notice-slot" id="notice-slot"></div>
+        <div class="today-layout">
+          <section class="panel timeline-panel" aria-labelledby="today-title">
+            <div class="panel-head">
+              <h2 id="today-title">今天的课</h2>
+              <span class="panel-sub" id="today-sum"></span>
+            </div>
+            <div class="day-switch" id="day-switch" role="group" aria-label="切换日期"></div>
+            <div id="timeline" class="timeline"></div>
+          </section>
+          <aside class="today-side">
+            <div class="panel side-panel" id="side-bring"></div>
+            <div class="panel side-panel" id="side-glance"></div>
+            <div class="panel side-panel" id="side-status"></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="view" id="view-week" data-view="week" role="tabpanel" aria-label="本周" hidden>
+        <section class="panel week-panel">
+          <div class="panel-head week-head">
+            <div class="week-title-wrap">
+              <h2 id="week-title">第 1 周</h2>
+              <span class="panel-sub" id="week-range"></span>
+            </div>
+            <div class="week-nav">
+              <button class="icon-btn" data-action="week-prev" aria-label="上一周">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6 9 12l5.5 6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </button>
+              <button class="text-btn" data-action="week-now">本周</button>
+              <button class="icon-btn" data-action="week-next" aria-label="下一周">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 6 15 12l-5.5 6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </button>
+            </div>
+          </div>
+          <div class="legend" id="legend"></div>
+          <div class="week-scroll" id="week-scroll" tabindex="0" aria-label="周课表，可横向滚动"></div>
+        </section>
+      </section>
+
+      <section class="view" id="view-courses" data-view="courses" role="tabpanel" aria-label="课程" hidden>
+        <div class="stack">
+          <section class="panel">
+            <div class="panel-head">
+              <h2>我的课程</h2>
+              <button class="text-btn accent" data-action="course-new">+ 添加课程</button>
+            </div>
+            <div id="course-list" class="course-list"></div>
+          </section>
+          <section class="panel">
+            <div class="panel-head">
+              <h2>数据与备份</h2>
+              <span class="panel-sub">课表只存在你自己的设备上</span>
+            </div>
+            <div class="btn-grid">
+              <button class="text-btn bordered" data-action="export-json">导出课表 JSON</button>
+              <button class="text-btn bordered" data-action="import-json">导入课表</button>
+              <button class="text-btn bordered" data-action="export-ics">导出 .ics 日历</button>
+              <button class="text-btn bordered" data-action="reset-demo">恢复示例课表</button>
+              <button class="text-btn bordered danger" data-action="clear-all">清空全部课程</button>
+            </div>
+            <p class="hint">提示：导出的 .ics 可以导入手机 / 电脑系统日历，即使不打开课刻，系统也会在课前 20 分钟和课前 2 分钟提醒你。</p>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="view-planner" data-view="planner" role="tabpanel" aria-label="日程" hidden>
+        <div class="stack">
+          <section class="panel planner-panel">
+            <div class="panel-head">
+              <h2>行程与课业</h2>
+              <button class="text-btn accent" data-action="task-new">+ 新建日程</button>
+            </div>
+            <div class="planner-stats" id="planner-stats"></div>
+            <div class="planner-filters" id="planner-filters"></div>
+            <div id="planner-list" class="planner-list"></div>
+          </section>
+          <section class="panel">
+            <div class="panel-head"><h2>任务传令</h2><span class="panel-sub">作业、DDL 与重要日程的提醒</span></div>
+            <div id="planner-settings"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="view-settings" data-view="settings" role="tabpanel" aria-label="设置" hidden>
+        <div id="settings-root" class="stack"></div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div class="foot-row">
+        <span id="foot-week">课刻 ClassTick</span>
+        <span class="foot-dot">·</span>
+        <span id="foot-note">数据仅保存在本机</span>
+        <span class="foot-dot">·</span>
+        <button class="link-btn" data-action="show-about">关于 / 安装指南</button>
+      </div>
+      <div class="foot-court">
+        <img class="foot-castle" src="assets/royal/castle-badge.webp" alt="">
+        <img class="foot-face" src="assets/royal/court-face-knight.webp" alt="">
+        <img class="foot-face" src="assets/royal/court-face-king.webp" alt="">
+        <img class="foot-face" src="assets/royal/court-face-queen.webp" alt="">
+        <span>王廷在侧 · The Court Attends</span>
+        <button class="link-btn" data-action="court-open">王廷档案</button>
+      </div>
+      <div class="foot-en" id="foot-en">Class Tick · Royal Edition · MMXXVI</div>
+    </footer>
+  </div>
+
+
+  <!-- 皇家导师：可交互的课表管家 -->
+  <div class="teacher-dock" id="teacher-dock" hidden>
+    <div class="teacher-bubble" id="teacher-bubble" hidden>
+      <p id="teacher-bubble-text"></p>
+      <div class="teacher-bubble-actions" id="teacher-bubble-actions"></div>
+    </div>
+    <button class="teacher-fab" id="teacher-fab" data-action="teacher-open" aria-label="呼叫皇家导师艾莉丝">
+      <img class="teacher-fab-img" src="assets/teacher/chibi.webp" alt="" width="64" height="64">
+      <span class="teacher-fab-ring" aria-hidden="true"></span>
+      <span class="teacher-fab-dot" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <dialog class="sheet teacher-sheet" id="dlg-teacher" aria-labelledby="teacher-dialog-title">
+    <div class="teacher-stage" data-action="teacher-art" title="点击查看全身立绘">
+      <img class="teacher-art" id="teacher-art" src="assets/teacher/full.webp" alt="皇家导师艾莉丝立绘">
+      <img class="teacher-expression" id="teacher-expression" alt="" aria-hidden="true">
+      <i class="teacher-sparkle s1" aria-hidden="true"></i>
+      <i class="teacher-sparkle s2" aria-hidden="true"></i>
+      <i class="teacher-sparkle s3" aria-hidden="true"></i>
+      <i class="teacher-sparkle s4" aria-hidden="true"></i>
+      <div class="teacher-stage-caption">
+        <span>ROYAL TUTOR</span>
+        <b>艾莉丝 · 瓦尔登</b>
+        <i>「朝程、鸣钟与落印，交由我记着。」</i>
+        <i class="teacher-outfit-name" id="teacher-outfit-name">COURT UNIFORM · 宫廷制服</i>
+        <i class="teacher-art-tip">点击舞台查看全身立绘</i>
+      </div>
+    </div>
+    <div class="teacher-chat">
+      <header class="teacher-head">
+        <span class="teacher-avatar"><img id="teacher-avatar-img" src="assets/teacher/avatar.webp" alt=""></span>
+        <div class="teacher-head-text">
+          <h2 id="teacher-dialog-title">皇家导师 · 艾莉丝<span class="teacher-ai-badge" id="teacher-ai-badge" hidden>AI</span></h2>
+          <p id="teacher-status">正在为你核对朝程…</p>
+        </div>
+        <div class="teacher-head-actions">
+          <button class="icon-btn" data-action="teacher-outfit" title="为艾莉丝换装" aria-label="为艾莉丝换装">✦</button>
+          <button class="icon-btn" data-action="teacher-tips" title="给我一点指引" aria-label="给我一点指引">?</button>
+          <button class="icon-btn" data-action="teacher-settings" title="导师与传令设置" aria-label="导师与传令设置">⚙</button>
+          <button class="icon-btn" data-action="close-dialog" aria-label="关闭">×</button>
+        </div>
+      </header>
+      <div class="teacher-log" id="teacher-log" tabindex="-1" autofocus aria-live="polite"></div>
+      <div class="teacher-quick" id="teacher-quick"></div>
+      <form class="teacher-input" id="teacher-form">
+        <input id="teacher-text" type="text" autocomplete="off"
+               placeholder="对艾莉丝说：早报改到 7:00 / 签到提前 5 分钟 / 换成深色…"
+               aria-label="对皇家导师说话">
+        <button type="submit" class="text-btn solid small">进言</button>
+      </form>
+      <div class="teacher-foot">
+        <button class="text-btn bordered tiny" data-action="close-dialog">结束晋见 · 关闭</button>
+        <span class="teacher-foot-tip">Esc / 点击窗外空白也可关闭</span>
+      </div>
+    </div>
+  </dialog>
+
+
+  <div class="reminder-stack" id="reminder-stack" aria-live="assertive"></div>
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+
+  <dialog class="sheet sheet-narrow" id="dlg-task" aria-labelledby="dlg-task-title">
+    <header class="sheet-head">
+      <h2 id="dlg-task-title">新建日程</h2>
+      <button type="button" class="icon-btn" data-action="close-dialog" aria-label="关闭">×</button>
+    </header>
+    <form id="task-form">
+      <input type="hidden" id="task-id" value="">
+      <div class="sheet-body">
+        <label class="field"><span>标题</span>
+          <input type="text" id="task-title" maxlength="80" required placeholder="例如：物理实验报告 / 高数第二章习题">
+        </label>
+        <div class="field-row">
+          <label class="field"><span>类型</span>
+            <select id="task-type">
+              <option value="homework">作业</option>
+              <option value="exam">考试</option>
+              <option value="todo">待办</option>
+              <option value="event">日程</option>
+            </select>
+          </label>
+          <label class="field"><span>关联课程</span>
+            <select id="task-course"><option value="">不关联</option></select>
+          </label>
+        </div>
+        <div class="field-row">
+          <label class="field"><span>截止日期</span><input type="date" id="task-due" required></label>
+          <label class="field"><span>截止时间（可选）</span><input type="time" id="task-time"></label>
+        </div>
+        <div class="field-row">
+          <label class="field"><span>优先级</span>
+            <select id="task-priority"><option value="1">重要</option><option value="2" selected>普通</option><option value="3">次要</option></select>
+          </label>
+          <label class="field"><span>提醒</span>
+            <select id="task-remind">
+              <option value="">跟随默认设置</option>
+              <option value="0">截止时</option>
+              <option value="15">提前 15 分钟</option>
+              <option value="30">提前 30 分钟</option>
+              <option value="60">提前 1 小时</option>
+              <option value="120">提前 2 小时</option>
+              <option value="1440">提前 1 天</option>
+            </select>
+          </label>
+        </div>
+        <label class="field"><span>备注（可选）</span><textarea id="task-note" rows="3" maxlength="300" placeholder="老师要求、提交方式、分组信息…"></textarea></label>
+      </div>
+      <footer class="sheet-foot">
+        <button type="button" class="text-btn danger" id="task-delete" data-action="task-delete">删除</button>
+        <button type="button" class="text-btn bordered" data-action="close-dialog">取消</button>
+        <button type="submit" class="text-btn solid">保存日程</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <dialog class="sheet" id="dlg-course" aria-labelledby="dlg-course-title">
+    <form id="course-form" method="dialog" novalidate>
+      <header class="sheet-head">
+        <h2 id="dlg-course-title">添加课程</h2>
+        <button type="button" class="icon-btn" data-action="close-dialog" aria-label="关闭">×</button>
+      </header>
+      <div class="sheet-body">
+        <div class="field-row">
+          <label class="field">
+            <span>课程名称 <em>*</em></span>
+            <input name="name" type="text" required maxlength="40" placeholder="例如：高等数学(B)" autocomplete="off">
+          </label>
+          <label class="field">
+            <span>任课老师</span>
+            <input name="teacher" type="text" maxlength="30" placeholder="选填" autocomplete="off">
+          </label>
+        </div>
+        <div class="field">
+          <span>课程颜色</span>
+          <div class="color-picker" id="color-picker" role="radiogroup" aria-label="课程颜色"></div>
+        </div>
+        <div class="sessions-head">
+          <span>上课时间与地点</span>
+          <button type="button" class="text-btn" data-action="session-add">+ 增加时间段</button>
+        </div>
+        <div class="session-rows" id="session-rows"></div>
+        <p class="hint">周次写法：<code>1-16</code> 每周、<code>1-16单</code> 单周、<code>2-16双</code> 双周、<code>1,3,5-9</code> 指定周。留空即每周。</p>
+      </div>
+      <footer class="sheet-foot">
+        <button type="button" class="text-btn bordered" data-action="close-dialog">取消</button>
+        <button type="submit" class="text-btn solid">保存课程</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <dialog class="sheet" id="dlg-import" aria-labelledby="dlg-import-title">
+    <form id="import-form" method="dialog">
+      <header class="sheet-head">
+        <h2 id="dlg-import-title">导入课表</h2>
+        <button type="button" class="icon-btn" data-action="close-dialog" aria-label="关闭">×</button>
+      </header>
+      <div class="sheet-body">
+        <label class="field">
+          <span>选择 JSON 文件</span>
+          <input type="file" id="import-file" accept=".json,application/json">
+        </label>
+        <label class="field">
+          <span>或直接粘贴 JSON</span>
+          <textarea id="import-text" rows="8" placeholder='{ "meta": { ... }, "courses": [ ... ] }'></textarea>
+        </label>
+        <p class="hint">导入会覆盖当前课表，建议先「导出课表 JSON」做备份。</p>
+        <p class="hint error" id="import-error" hidden></p>
+      </div>
+      <footer class="sheet-foot">
+        <button type="button" class="text-btn bordered" data-action="close-dialog">取消</button>
+        <button type="submit" class="text-btn solid">导入并覆盖</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <dialog class="sheet sheet-narrow" id="dlg-confirm" aria-labelledby="dlg-confirm-title">
+    <header class="sheet-head">
+      <h2 id="dlg-confirm-title">确认操作</h2>
+      <button type="button" class="icon-btn" data-action="close-dialog" aria-label="关闭">×</button>
+    </header>
+    <div class="sheet-body">
+      <p id="dlg-confirm-text">确定吗？</p>
+    </div>
+    <footer class="sheet-foot">
+      <button type="button" class="text-btn bordered" data-action="close-dialog">取消</button>
+      <button type="button" class="text-btn solid danger" id="dlg-confirm-ok">确定</button>
+    </footer>
+  </dialog>
+
+  <dialog class="sheet court-sheet" id="dlg-court" aria-labelledby="dlg-court-title">
+    <header class="sheet-head">
+      <h2 id="dlg-court-title">王廷 · Royal Court</h2>
+      <button type="button" class="icon-btn" data-action="close-dialog" aria-label="关闭">×</button>
+    </header>
+    <div class="sheet-body court-body">
+      <p class="court-lead">晨星堡的王廷会在课表旁静静守候。他们不打扰，只在需要时出现。</p>
+      <div class="court-grid">
+        <article class="court-full-card">
+          <img src="assets/royal/castle-crest.webp" alt="晨星堡纹章">
+          <h3>晨星堡</h3><i>Castle Morningstar</i>
+          <p>课刻的城堡与纹章所在。你的每一份课表，都封存在这里的档案库中。</p>
+          <blockquote>灯火常明，为每一位晚归的学子。</blockquote>
+        </article>
+        <article class="court-full-card">
+          <img src="assets/royal/knight.webp" alt="骑士塞德里克">
+          <h3>银枪骑士 · 塞德里克</h3><i>Sir Cedric, the Silver Lance</i>
+          <p>守在今日朝程旁的骑士。号角响起时，他提醒你按时启程。</p>
+          <blockquote>守住时间，便守住了承诺。</blockquote>
+        </article>
+        <article class="court-full-card">
+          <img src="assets/royal/king.webp" alt="奥瑞恩国王">
+          <h3>奥瑞恩国王</h3><i>King Orion</i>
+          <p>他相信秩序始于准时，也相信每一次守时都值得被记住。</p>
+          <blockquote>秩序始于准时。</blockquote>
+        </article>
+        <article class="court-full-card">
+          <img src="assets/royal/queen.webp" alt="赛琳娜王后">
+          <h3>赛琳娜王后</h3><i>Queen Selene</i>
+          <p>她照看王廷的花园与灯烛，也照看每一段被认真对待的时间。</p>
+          <blockquote>温柔亦是一种坚持。</blockquote>
+        </article>
+      </div>
+      <section class="court-witch">
+        <img id="court-witch-img" src="assets/teacher/full-witch.webp" alt="旅行魔女艾莉丝">
+        <div class="court-witch-copy">
+          <span class="court-eyebrow">The Wandering Witch</span>
+          <h3>旅行魔女 · 艾莉丝</h3>
+          <i>Elise, the Wandering Witch</i>
+          <p>当她戴上白色宽檐帽、拿起扫帚，课表就成了一张小小的旅行地图。每一节课，都是一段小小的旅程。</p>
+          <div class="court-witch-actions">
+            <button class="text-btn solid tiny" data-action="court-witch">为她换上魔女装</button>
+            <button class="text-btn bordered tiny" data-action="court-teacher">唤来艾莉丝</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </dialog>
+
+  <dialog class="sheet art-sheet" id="dlg-art" aria-labelledby="dlg-art-title">
+    <header class="sheet-head">
+      <h2 id="dlg-art-title">皇家导师 · 全身立绘</h2>
+      <button type="button" class="icon-btn" data-action="close-dialog" aria-label="关闭">×</button>
+    </header>
+    <div class="sheet-body">
+      <img class="art-full" id="art-full" src="assets/teacher/full.webp" alt="皇家导师艾丽丝全身立绘">
+    </div>
+  </dialog>
+
+  <dialog class="sheet sheet-narrow" id="dlg-about" aria-labelledby="dlg-about-title">
+    <header class="sheet-head">
+      <h2 id="dlg-about-title">关于课刻 · 安装指南</h2>
+      <button type="button" class="icon-btn" data-action="close-dialog" aria-label="关闭">×</button>
+    </header>
+    <div class="sheet-body" id="about-body"></div>
+    <footer class="sheet-foot">
+      <button type="button" class="text-btn solid" data-action="close-dialog">知道啦</button>
+    </footer>
+  </dialog>
+
+  <noscript>
+    <div class="noscript">课刻需要启用 JavaScript 才能显示课表。</div>
+  </noscript>
+
+  <script src="assets/seed.js"></script>
+  <script src="assets/core.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

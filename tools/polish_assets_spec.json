@@ -1,0 +1,25 @@
+{
+  "jobs": [
+    {
+      "out": "class-tick/assets/royal/raw/icon-v2.png",
+      "size": "1024x1024",
+      "quality": "high",
+      "model": "gpt-image-2",
+      "prompt": "A luxurious app icon for a royal class registry, square 1:1. Heraldic totem composition: an ornate antique golden crown at the top, a royal escutcheon shield in the center bearing a small ivory castle and a golden quill with a scroll, flanked by symmetrical golden laurel branches, a crimson ribbon banner beneath. Deep midnight royal-blue enamel background with very subtle damask pattern and soft radial glow. Antique gold filigree linework, small crimson ruby and sapphire jewel accents, art-deco symmetry, elegant and noble, flat vector illustration with delicate gold foil highlights and a soft outer gold rim. No text, no letters, no watermark, centered with generous negative space."
+    },
+    {
+      "out": "class-tick/assets/teacher/raw/full-star.png",
+      "size": "1024x1536",
+      "quality": "high",
+      "model": "gpt-image-2",
+      "prompt": "High-quality Japanese anime character illustration (modern TV anime style, clean lineart, soft cel shading, elegant highlight rendering). Same original character: a graceful young royal tutor woman, around 24, long silver-blonde hair with a side braid and a small gold crown hairpin, violet eyes, gentle composed expression. Now wearing a midnight-blue royal evening gown embroidered with fine golden constellation patterns and small stars, a sheer navy capelet with gold trim, pearl earrings, white gloves, holding a rolled parchment scroll. Full-body standing pose, dignified and warm, facing viewer, complete figure visible with margin. Flat pure white background (#ffffff), no text, no watermark, no other characters, centered."
+    },
+    {
+      "out": "class-tick/assets/teacher/raw/full-rose.png",
+      "size": "1024x1536",
+      "quality": "high",
+      "model": "gpt-image-2",
+      "prompt": "High-quality Japanese anime character illustration (modern TV anime style, clean lineart, soft cel shading, elegant highlight rendering). Same original character: a graceful young royal tutor woman, around 24, long silver-blonde hair with a side braid and a small gold crown hairpin, violet eyes, gentle warm smile. Now wearing an ivory and rose-white royal court gown with gold rose embroidery, layered white petticoats, a short ivory capelet with gold clasp, pearl necklace, white gloves, holding a rolled parchment scroll. Full-body standing pose, elegant and kind, facing viewer, complete figure visible with margin. Flat pure white background (#ffffff), no text, no watermark, no other characters, centered."
+    }
+  ]
+}

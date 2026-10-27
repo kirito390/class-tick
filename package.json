@@ -1,0 +1,39 @@
+{
+  "name": "class-tick",
+  "version": "1.6.0",
+  "description": "课刻 ClassTick · 皇室课程表 PWA / 桌面小组件 / 皇家导师 / Web Push / Capacitor 原生壳",
+  "main": "server.mjs",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node tests/core.test.cjs",
+    "qa": "node tools/qa.mjs",
+    "build": "node tools/build_single.mjs",
+    "assets:court": "python tools/process_court_assets.py",
+    "assets:expressions": "python tools/process_expressions.py",
+    "native:prepare": "node tools/prepare_native.mjs",
+    "native:sync": "npm run native:prepare && npx cap sync android",
+    "native:android": "npx cap open android",
+    "apk": "powershell -ExecutionPolicy Bypass -File tools/build_apk.ps1"
+  },
+  "keywords": [
+    "timetable",
+    "pwa",
+    "web-push",
+    "capacitor",
+    "class-tick"
+  ],
+  "author": "李长晟",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "@capacitor/android": "^6.2.2",
+    "@capacitor/cli": "^6.2.2",
+    "@capacitor/core": "^6.2.2",
+    "web-push": "^3.6.7"
+  },
+  "private": true
+}

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="课刻 · 皇家典藏">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2c2154"/>
+      <stop offset="1" stop-color="#140f2b"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4dfa4"/>
+      <stop offset=".55" stop-color="#d3a94f"/>
+      <stop offset="1" stop-color="#a67c26"/>
+    </linearGradient>
+    <clipPath id="round"><rect width="512" height="512" rx="112"/></clipPath>
+  </defs>
+  <g clip-path="url(#round)">
+    <rect width="512" height="512" fill="url(#bg)"/>
+    <rect x="18" y="18" width="476" height="476" rx="98" fill="none" stroke="#c9a24a" stroke-opacity=".42" stroke-width="2"/>
+    <path d="M136 196 L136 122 L184 160 L216 96 L256 150 L296 96 L328 160 L376 122 L376 196 Z"
+          fill="url(#gold)" stroke="#8a6420" stroke-width="4" stroke-linejoin="round"/>
+    <rect x="130" y="194" width="252" height="30" rx="10" fill="url(#gold)" stroke="#8a6420" stroke-width="4"/>
+    <circle cx="136" cy="115" r="11" fill="#f4dfa4"/>
+    <circle cx="256" cy="88" r="12" fill="#f4dfa4"/>
+    <circle cx="376" cy="115" r="11" fill="#f4dfa4"/>
+    <path d="M158 258 H354 V344 C354 396 306 428 256 446 C206 428 158 396 158 344 Z"
+          fill="#1d1740" stroke="url(#gold)" stroke-width="9" stroke-linejoin="round"/>
+    <g fill="url(#gold)">
+      <rect x="196" y="318" width="120" height="82" rx="5"/>
+      <rect x="196" y="298" width="22" height="36"/>
+      <rect x="237" y="298" width="22" height="36"/>
+      <rect x="278" y="298" width="22" height="36"/>
+    </g>
+    <path d="M238 400 V362 a18 18 0 0 1 36 0 V400 Z" fill="#1d1740"/>
+    <path d="M256 258 l6 12 13 2 -9 9 2 13 -12 -6 -12 6 2 -13 -9 -9 13 -2 z" fill="#f4dfa4" opacity=".92"/>
+    <path d="M140 404 C200 384 312 384 372 404 L372 438 C312 418 200 418 140 438 Z"
+          fill="url(#gold)" stroke="#8a6420" stroke-width="4" stroke-linejoin="round"/>
+  </g>
+</svg>

@@ -1,0 +1,118 @@
+{
+  "id": "./",
+  "name": "课刻 ClassTick · 皇家课程表",
+  "short_name": "课刻",
+  "description": "皇室典藏课程表：可交互皇家导师艾莉丝、今日朝程、晨钟诏书、鸣钟示警、课前 2 分钟落印签到、随身行囊。",
+  "lang": "zh-CN",
+  "dir": "ltr",
+  "start_url": "./?source=pwa",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
+  "orientation": "any",
+  "background_color": "#e9dbb8",
+  "theme_color": "#241a44",
+  "categories": [
+    "education",
+    "productivity",
+    "utilities"
+  ],
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "shots/mobile-today.png",
+      "sizes": "860x1880",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "今日课表"
+    },
+    {
+      "src": "shots/desktop-today.png",
+      "sizes": "2160x1530",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "电脑桌面视图"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "王廷档案",
+      "short_name": "王廷",
+      "url": "./?court=1",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "新建日程 / DDL",
+      "short_name": "日程",
+      "url": "./?tab=planner",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    
+    {
+      "name": "今日课表",
+      "short_name": "今日",
+      "url": "./?tab=today",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "本周课表",
+      "short_name": "本周",
+      "url": "./?tab=week",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "小组件模式",
+      "short_name": "小组件",
+      "url": "./?widget=1",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "呼叫皇家导师",
+      "short_name": "皇家导师",
+      "url": "./?teacher=1",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}

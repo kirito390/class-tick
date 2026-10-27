@@ -1,0 +1,262 @@
+/* ============================================================ 课刻 v1.5 · 王廷 / 城堡 / 魔女 */
+
+/* Header 城堡徽记 */
+.brand-castle {
+  display: none;
+  width: 34px;
+  height: 34px;
+  margin-left: 7px;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  filter: drop-shadow(0 4px 8px rgba(28, 18, 50, .25));
+  animation: castle-float 7s ease-in-out infinite;
+}
+.brand-castle img { width: 100%; height: 100%; object-fit: contain; display: block; }
+html[data-skin="royal"] .brand-castle { display: inline-flex; }
+
+/* 王廷巡礼条 */
+.court-strip {
+  display: none;
+  margin: 16px 0 18px;
+  padding: 16px 20px;
+  border: 1px solid var(--gold-line, rgba(160, 118, 38, .32));
+  border-radius: 20px;
+  background:
+    radial-gradient(90% 120% at 0% 0%, rgba(201, 164, 79, .12), transparent 55%),
+    linear-gradient(180deg, rgba(255, 252, 243, .82), rgba(247, 236, 214, .55));
+  box-shadow: 0 12px 30px rgba(52, 35, 16, .06);
+  align-items: center;
+  gap: 24px;
+}
+html[data-skin="royal"] .court-strip { display: flex; }
+.court-copy { flex: 1 1 260px; min-width: 0; }
+.court-eyebrow {
+  display: block;
+  font-family: var(--font-en, "Palatino Linotype", serif);
+  font-size: 9.5px;
+  letter-spacing: .3em;
+  color: var(--gold-deep, #8a621e);
+  text-transform: uppercase;
+}
+.court-copy h2 {
+  margin: 3px 0 4px;
+  font-family: var(--font-song, "STSong", serif);
+  font-size: 21px;
+  letter-spacing: .2em;
+  color: var(--royal, #241a44);
+}
+html[data-skin="royal"] .court-copy h2::before {
+  content: "♛";
+  margin-right: 8px;
+  color: var(--gold, #c9a44f);
+  font-size: 16px;
+  vertical-align: 2px;
+}
+.court-copy p { margin: 0 0 8px; font-size: 12px; line-height: 1.7; color: var(--muted, #7d6547); }
+.court-cards { display: flex; gap: 8px; flex: none; }
+.court-card {
+  appearance: none;
+  width: 112px;
+  padding: 10px 6px 8px;
+  border: 1px solid var(--gold-line, rgba(160, 118, 38, .26));
+  border-radius: 14px;
+  background: rgba(255, 252, 243, .6);
+  font-family: inherit;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+.court-card:hover, .court-card:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--gold, #c9a44f);
+  box-shadow: 0 8px 20px rgba(52, 35, 16, .1);
+}
+.court-thumb { height: 86px; display: grid; place-items: center; width: 100%; }
+.court-thumb img { max-height: 86px; max-width: 100%; object-fit: contain; filter: drop-shadow(0 4px 8px rgba(28, 18, 50, .14)); }
+.court-card b { font-size: 11.5px; font-weight: 600; color: var(--ink, #33220f); letter-spacing: .03em; }
+.court-card i { font-style: normal; font-family: var(--font-en, "Palatino Linotype", serif); font-size: 8.5px; color: var(--muted, #7d6547); letter-spacing: .02em; }
+
+/* 页脚王廷一行 */
+.foot-court {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin: 2px 0 4px;
+  font-family: var(--font-kai, "STKaiti", serif);
+  font-size: 10.5px;
+  color: var(--muted, #7d6547);
+}
+html[data-skin="royal"] .foot-court { display: flex; }
+.foot-court .foot-castle { width: 22px; height: 22px; object-fit: contain; opacity: .85; }
+.foot-court .foot-face {
+  width: 19px; height: 19px; border-radius: 50%;
+  border: 1px solid var(--gold-line, rgba(160, 118, 38, .5));
+  object-fit: cover;
+}
+.foot-court span { margin-left: 3px; letter-spacing: .08em; }
+.foot-court .link-btn { font-size: 10.5px; }
+
+/* 王廷档案弹层 */
+.court-sheet { width: min(1020px, calc(100vw - 28px)); max-height: 92vh; }
+.court-body { padding-bottom: 22px; }
+.court-lead {
+  margin: 0 0 14px;
+  padding: 10px 14px;
+  border-left: 3px solid var(--gold, #c9a44f);
+  background: rgba(201, 164, 79, .08);
+  border-radius: 0 10px 10px 0;
+  font-family: var(--font-kai, "STKaiti", serif);
+  font-size: 13px;
+  color: var(--ink-2, #4a3320);
+}
+.court-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.court-full-card {
+  padding: 12px 10px;
+  border: 1px solid var(--gold-line, rgba(160, 118, 38, .28));
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255, 252, 243, .9), rgba(247, 236, 214, .5));
+  text-align: center;
+}
+.court-full-card img {
+  height: 196px;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 6px;
+  filter: drop-shadow(0 8px 18px rgba(28, 18, 50, .18));
+}
+.court-full-card h3 { margin: 2px 0 1px; font-family: var(--font-song, "STSong", serif); font-size: 14px; letter-spacing: .06em; color: var(--royal, #241a44); }
+.court-full-card i { font-style: normal; font-family: var(--font-en, "Palatino Linotype", serif); font-size: 8.5px; letter-spacing: .05em; color: var(--muted, #7d6547); }
+.court-full-card p { margin: 7px 0; font-size: 11.5px; line-height: 1.65; color: var(--muted, #7d6547); text-align: left; }
+.court-full-card blockquote {
+  margin: 0;
+  padding-top: 7px;
+  border-top: 1px dashed var(--gold-line, rgba(160, 118, 38, .3));
+  font-family: var(--font-kai, "STKaiti", serif);
+  font-size: 11px;
+  color: var(--gold-deep, #8a621e);
+}
+.court-witch {
+  margin-top: 14px;
+  padding: 16px 18px;
+  border: 1px solid rgba(201, 164, 79, .4);
+  border-radius: 18px;
+  background:
+    radial-gradient(80% 120% at 20% 0%, rgba(96, 74, 160, .35), transparent 60%),
+    linear-gradient(120deg, #241a44, #3a2b63 55%, #1a1335);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: var(--gold-3, #f7ecc9);
+}
+.court-witch img { height: 280px; width: auto; object-fit: contain; filter: drop-shadow(0 12px 28px rgba(0, 0, 0, .45)); }
+.court-witch-copy { flex: 1; min-width: 0; }
+.court-witch-copy .court-eyebrow { color: var(--gold-3, #f7ecc9); opacity: .8; }
+.court-witch-copy h3 { margin: 4px 0 1px; font-family: var(--font-song, "STSong", serif); font-size: 20px; letter-spacing: .12em; }
+.court-witch-copy i { font-style: normal; font-family: var(--font-en, "Palatino Linotype", serif); font-size: 9.5px; letter-spacing: .08em; opacity: .7; }
+.court-witch-copy p { margin: 8px 0 12px; font-size: 12px; line-height: 1.75; color: rgba(247, 236, 201, .82); }
+.court-witch-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.court-witch-actions .text-btn { border-color: rgba(201, 164, 79, .55); color: var(--gold-3, #f7ecc9); }
+.court-witch-actions .text-btn.solid { background: linear-gradient(180deg, #e7c877, #b98a2f); color: #2a1d0c; border-color: #e7c877; }
+
+/* Hero 行囊可勾选 */
+.hero-bring-chip {
+  appearance: none;
+  border: 1px solid rgba(201, 164, 79, .45);
+  background: rgba(255, 252, 243, .08);
+  color: inherit;
+  font-family: inherit;
+  font-size: 12px;
+  padding: 2px 9px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all .16s ease;
+}
+.hero-bring-chip:hover { border-color: var(--gold, #c9a44f); background: rgba(255, 252, 243, .16); }
+.hero-bring-chip.is-packed { opacity: .62; text-decoration: line-through; text-decoration-thickness: 1px; }
+.hero-bring-chip i { font-style: normal; color: #8fe0a2; margin-right: 2px; }
+
+/* 魔女装舞台 */
+.teacher-sheet[data-outfit="witch"] .teacher-art { animation: witch-sway 7s ease-in-out infinite; }
+.teacher-sheet[data-outfit="witch"] .teacher-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(2px 2px at 18% 22%, rgba(247, 236, 201, .9), transparent 55%),
+    radial-gradient(2px 2px at 72% 14%, rgba(247, 236, 201, .75), transparent 55%),
+    radial-gradient(1.5px 1.5px at 82% 62%, rgba(247, 236, 201, .7), transparent 55%),
+    radial-gradient(1.5px 1.5px at 28% 72%, rgba(247, 236, 201, .6), transparent 55%);
+  opacity: .8;
+  pointer-events: none;
+  animation: star-drift 12s linear infinite;
+}
+
+/* 动效 */
+@keyframes castle-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+@keyframes witch-sway {
+  0%, 100% { transform: translateX(-50%) rotate(-.5deg); }
+  50% { transform: translateX(-50%) rotate(.5deg); }
+}
+@keyframes star-drift {
+  from { transform: translateY(4px); opacity: .35; }
+  50% { opacity: .9; }
+  to { transform: translateY(-4px); opacity: .35; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-castle { animation: none; }
+  .teacher-sheet[data-outfit="witch"] .teacher-art { animation: none; }
+  .teacher-sheet[data-outfit="witch"] .teacher-stage::before { animation: none; }
+}
+
+@media (max-width: 980px) {
+  .court-strip { flex-direction: column; align-items: stretch; gap: 12px; padding: 14px 16px; }
+  .court-copy { flex: 0 0 auto; }
+  .court-cards { flex: 0 0 auto; overflow-x: auto; padding-bottom: 4px; scroll-snap-type: x mandatory; }
+  .court-card { flex: none; scroll-snap-align: start; width: 100px; }
+  .court-thumb { height: 72px; }
+  .court-thumb img { max-height: 72px; }
+  .court-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .court-full-card img { height: 160px; }
+  .court-witch { flex-direction: column; align-items: flex-start; }
+  .court-witch img { height: 240px; align-self: center; }
+}
+@media (max-width: 560px) {
+  .brand-castle { width: 27px; height: 27px; margin-left: 5px; }
+  .court-copy h2 { font-size: 18px; }
+  .court-card b { font-size: 10.5px; }
+  .court-card i { font-size: 7.5px; }
+  .foot-court span { display: none; }
+  .court-witch { padding: 12px; }
+  .court-witch img { height: 210px; }
+  .court-witch-copy h3 { font-size: 17px; }
+}
+
+/* 夜堡 */
+html[data-skin="royal"][data-theme="dark"] .court-strip {
+  background:
+    radial-gradient(90% 120% at 0% 0%, rgba(201, 164, 79, .13), transparent 55%),
+    linear-gradient(180deg, rgba(43, 32, 74, .85), rgba(28, 20, 52, .8));
+  border-color: rgba(201, 164, 79, .3);
+}
+html[data-skin="royal"][data-theme="dark"] .court-copy h2,
+html[data-skin="royal"][data-theme="dark"] .court-card b { color: var(--gold-3, #f7ecc9); }
+html[data-skin="royal"][data-theme="dark"] .court-copy p,
+html[data-skin="royal"][data-theme="dark"] .court-card i,
+html[data-skin="royal"][data-theme="dark"] .court-full-card p { color: rgba(247, 236, 201, .72); }
+html[data-skin="royal"][data-theme="dark"] .court-card,
+html[data-skin="royal"][data-theme="dark"] .court-full-card {
+  background: linear-gradient(180deg, rgba(50, 38, 84, .8), rgba(30, 22, 56, .75));
+  border-color: rgba(201, 164, 79, .26);
+}
+html[data-skin="royal"][data-theme="dark"] .court-full-card h3 { color: var(--gold-3, #f7ecc9); }
